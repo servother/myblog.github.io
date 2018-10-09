@@ -724,13 +724,16 @@
 
       
         
-          
-            <p>mysql官方文档是表明不支持嵌套事务的。在一个事务中开启另一个事务，会隐式commit外层事务。</p>
+          <p>mysql官方文档是表明不支持嵌套事务的。在一个事务中开启另一个事务，会隐式commit外层事务。</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>新建一个测试表（建表SQL略），表名：demo，字段：id（自增），txt。开启事务如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">START TRANSACTION;</span><br><span class="line">INSERT INTO demo (txt) VALUES (<span class="string">'job'</span>);</span><br><span class="line">START TRANSACTION;</span><br><span class="line">INSERT INTO demo (txt) VALUES (<span class="string">'cook'</span>);</span><br><span class="line">COMMIT;</span><br><span class="line">ROLLBACK;</span><br></pre></td></tr></table></figure></p>
-<p>当你只执行前两句SQL时，此时观察表中并没有txt为job的数据。当你执行前三句你会发现表中已经有了txt为job的数据。</p>
-<h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><p>还有以下一些关键词会触发mysql的隐式提交。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ALTER FUNCTION    </span><br><span class="line">ALTER PROCEDURE    </span><br><span class="line">ALTER TABLE    </span><br><span class="line">BEGIN    </span><br><span class="line">CREATE DATABASE    </span><br><span class="line">CREATE FUNCTION    </span><br><span class="line">CREATE INDEX    </span><br><span class="line">CREATE PROCEDURE    </span><br><span class="line">CREATE TABLE    </span><br><span class="line">DROP DATABASE    </span><br><span class="line">DROP FUNCTION    </span><br><span class="line">DROP INDEX    </span><br><span class="line">DROP PROCEDURE    </span><br><span class="line">DROP TABLE    </span><br><span class="line">UNLOCK TABLES    </span><br><span class="line">LOAD MASTER DATA    </span><br><span class="line">LOCK TABLES    </span><br><span class="line">RENAME TABLE    </span><br><span class="line">TRUNCATE TABLE    </span><br><span class="line">SET AUTOCOMMIT=1    </span><br><span class="line">START TRANSACTION</span><br></pre></td></tr></table></figure></p>
-
-          
+<p>当你只执行前两句SQL时，此时观察表中并没有txt为job的数据。当你执行前三句你会发现表中已经有了txt为job的数据。<br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/08/mysql嵌套事务/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1168,6 +1171,7 @@
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<!-- more -->
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
@@ -1847,6 +1851,21 @@
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
 

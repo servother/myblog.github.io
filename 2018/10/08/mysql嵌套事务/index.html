@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="GT的博客">
 <meta property="og:description" content="mysql官方文档是表明不支持嵌套事务的。在一个事务中开启另一个事务，会隐式commit外层事务。 示例新建一个测试表（建表SQL略），表名：demo，字段：id（自增），txt。开启事务如下：123456START TRANSACTION;INSERT INTO demo (txt) VALUES (&apos;job&apos;);START TRANSACTION;INSERT INTO demo (txt)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-09T06:48:38.872Z">
+<meta property="og:updated_time" content="2018-10-09T07:02:51.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql嵌套事务的隐式提交">
 <meta name="twitter:description" content="mysql官方文档是表明不支持嵌套事务的。在一个事务中开启另一个事务，会隐式commit外层事务。 示例新建一个测试表（建表SQL略），表名：demo，字段：id（自增），txt。开启事务如下：123456START TRANSACTION;INSERT INTO demo (txt) VALUES (&apos;job&apos;);START TRANSACTION;INSERT INTO demo (txt)">
@@ -437,7 +437,7 @@
       
         <p>mysql官方文档是表明不支持嵌套事务的。在一个事务中开启另一个事务，会隐式commit外层事务。</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>新建一个测试表（建表SQL略），表名：demo，字段：id（自增），txt。开启事务如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">START TRANSACTION;</span><br><span class="line">INSERT INTO demo (txt) VALUES (<span class="string">'job'</span>);</span><br><span class="line">START TRANSACTION;</span><br><span class="line">INSERT INTO demo (txt) VALUES (<span class="string">'cook'</span>);</span><br><span class="line">COMMIT;</span><br><span class="line">ROLLBACK;</span><br></pre></td></tr></table></figure></p>
-<p>当你只执行前两句SQL时，此时观察表中并没有txt为job的数据。当你执行前三句你会发现表中已经有了txt为job的数据。</p>
+<p>当你只执行前两句SQL时，此时观察表中并没有txt为job的数据。当你执行前三句你会发现表中已经有了txt为job的数据。<br><a id="more"></a></p>
 <h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><p>还有以下一些关键词会触发mysql的隐式提交。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ALTER FUNCTION    </span><br><span class="line">ALTER PROCEDURE    </span><br><span class="line">ALTER TABLE    </span><br><span class="line">BEGIN    </span><br><span class="line">CREATE DATABASE    </span><br><span class="line">CREATE FUNCTION    </span><br><span class="line">CREATE INDEX    </span><br><span class="line">CREATE PROCEDURE    </span><br><span class="line">CREATE TABLE    </span><br><span class="line">DROP DATABASE    </span><br><span class="line">DROP FUNCTION    </span><br><span class="line">DROP INDEX    </span><br><span class="line">DROP PROCEDURE    </span><br><span class="line">DROP TABLE    </span><br><span class="line">UNLOCK TABLES    </span><br><span class="line">LOAD MASTER DATA    </span><br><span class="line">LOCK TABLES    </span><br><span class="line">RENAME TABLE    </span><br><span class="line">TRUNCATE TABLE    </span><br><span class="line">SET AUTOCOMMIT=1    </span><br><span class="line">START TRANSACTION</span><br></pre></td></tr></table></figure></p>
 
       
@@ -1181,6 +1181,21 @@
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
 
