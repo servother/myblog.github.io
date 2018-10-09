@@ -578,15 +578,14 @@
 
       
         
-          
-            <a id="more"></a>
-<h2 id="概念说明"><a href="#概念说明" class="headerlink" title="概念说明"></a>概念说明</h2><h3 id="名词介绍"><a href="#名词介绍" class="headerlink" title="名词介绍"></a>名词介绍</h3><p>Broker：简单来说就是消息队列服务器实体。<br>Exchange：消息交换机，它指定消息按什么规则，路由到哪个队列。<br>Queue：消息队列载体，每个消息都会被投入到一个或多个队列。<br>Binding：绑定，它的作用就是把exchange和queue按照路由规则绑定起来。<br>Routing Key：路由关键字，exchange根据这个关键字进行消息投递。<br>vhost：虚拟主机，一个broker里可以开设多个vhost，用作不同用户的权限分离。<br>producer：消息生产者，就是投递消息的程序。<br>consumer：消息消费者，就是接受消息的程序。<br>channel：消息通道，在客户端的每个连接里，可建立多个channel，每个channel代表一个会话任务。</p>
-<h3 id="流程说明"><a href="#流程说明" class="headerlink" title="流程说明"></a>流程说明</h3><p>消息队列的使用过程大概如下：<br>(1)客户端连接到消息队列服务器，打开一个channel。<br>(2)客户端声明一个exchange，并设置相关属性。<br>(3)客户端声明一个queue，并设置相关属性。<br>(4)客户端使用routing key，在exchange和queue之间建立好绑定关系。<br>(5)客户端投递消息到exchange。</p>
-<p>exchange接收到消息后，就根据消息的key和已经设置的binding，进行消息路由，将消息投递到一个或多个队列里。<br>exchange也有几个类型，完全根据key进行投递的叫做Direct交换机，例如，绑定时设置了routing key为”abc”，那么客户端提交的消息，只有设置了key为”abc”的才会投递到队列。<br>对key进行模式匹配后进行投递的叫做Topic交换机，符号”#”匹配一个或多个词，符号”*”匹配正好一个词。例如”abc.#”匹配”abc.def.ghi”，”abc.*”只匹配”abc.def”。<br>还有一种不需要key的，叫做Fanout交换机，它采取广播模式，一个消息进来时，投递到与该交换机绑定的所有队列。</p>
-<p>RabbitMQ支持消息的持久化，也就是数据写在磁盘上，为了数据安全考虑，我想大多数用户都会选择持久化。消息队列持久化包括3个部分：<br>(1)exchange持久化，在声明时指定durable =&gt; 1<br>(2)queue持久化，在声明时指定durable =&gt; 1<br>(3)消息持久化，在投递时指定delivery_mode =&gt; 2（1是非持久化）<br>如果exchange和queue都是持久化的，那么它们之间的binding也是持久化的。如果exchange和queue两者之间有一个持久化，一个非持久化，就不允许建立绑定。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>略</p>
-
-          
+          <h2 id="概念说明"><a href="#概念说明" class="headerlink" title="概念说明"></a>概念说明</h2><h3 id="名词介绍"><a href="#名词介绍" class="headerlink" title="名词介绍"></a>名词介绍</h3><p>Broker：简单来说就是消息队列服务器实体。<br>Exchange：消息交换机，它指定消息按什么规则，路由到哪个队列。<br>Queue：消息队列载体，每个消息都会被投入到一个或多个队列。<br>Binding：绑定，它的作用就是把exchange和queue按照路由规则绑定起来。<br>Routing Key：路由关键字，exchange根据这个关键字进行消息投递。<br>vhost：虚拟主机，一个broker里可以开设多个vhost，用作不同用户的权限分离。<br>producer：消息生产者，就是投递消息的程序。<br>consumer：消息消费者，就是接受消息的程序。<br>channel：消息通道，在客户端的每个连接里，可建立多个channel，每个channel代表一个会话任务。<br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/08/rabbitmq入门/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -726,8 +725,7 @@
       
         
           
-            <a id="more"></a>
-<p>mysql官方文档是表明不支持嵌套事务的。在一个事务中开启另一个事务，会隐式commit外层事务。</p>
+            <p>mysql官方文档是表明不支持嵌套事务的。在一个事务中开启另一个事务，会隐式commit外层事务。</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>新建一个测试表（建表SQL略），表名：demo，字段：id（自增），txt。开启事务如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">START TRANSACTION;</span><br><span class="line">INSERT INTO demo (txt) VALUES (<span class="string">'job'</span>);</span><br><span class="line">START TRANSACTION;</span><br><span class="line">INSERT INTO demo (txt) VALUES (<span class="string">'cook'</span>);</span><br><span class="line">COMMIT;</span><br><span class="line">ROLLBACK;</span><br></pre></td></tr></table></figure></p>
 <p>当你只执行前两句SQL时，此时观察表中并没有txt为job的数据。当你执行前三句你会发现表中已经有了txt为job的数据。</p>
 <h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><p>还有以下一些关键词会触发mysql的隐式提交。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ALTER FUNCTION    </span><br><span class="line">ALTER PROCEDURE    </span><br><span class="line">ALTER TABLE    </span><br><span class="line">BEGIN    </span><br><span class="line">CREATE DATABASE    </span><br><span class="line">CREATE FUNCTION    </span><br><span class="line">CREATE INDEX    </span><br><span class="line">CREATE PROCEDURE    </span><br><span class="line">CREATE TABLE    </span><br><span class="line">DROP DATABASE    </span><br><span class="line">DROP FUNCTION    </span><br><span class="line">DROP INDEX    </span><br><span class="line">DROP PROCEDURE    </span><br><span class="line">DROP TABLE    </span><br><span class="line">UNLOCK TABLES    </span><br><span class="line">LOAD MASTER DATA    </span><br><span class="line">LOCK TABLES    </span><br><span class="line">RENAME TABLE    </span><br><span class="line">TRUNCATE TABLE    </span><br><span class="line">SET AUTOCOMMIT=1    </span><br><span class="line">START TRANSACTION</span><br></pre></td></tr></table></figure></p>
