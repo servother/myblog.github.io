@@ -5,4 +5,8 @@ db.json
 node_modules/
 public/
 .deploy*/
+<<<<<<< HEAD
 package-lock.json
+=======
+package-lock.json
+>>>>>>> 9171f3d5b8b8cd0682d9a543c4240e517a224ca1
