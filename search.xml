@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux下修改主机名]]></title>
+    <url>%2F2018%2F10%2F18%2FLinux%E4%B8%8B%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%9C%BA%E5%90%8D%2F</url>
+    <content type="text"><![CDATA[LInux下修改主机名hostname + 主机名这种修改只是暂时有效，在当前Linux运行期间有效。重启后就失效了。 修改/etc/hosts这种方法文件里的主机名只是用来提供给dns解析的.如果你用不上dns,只需要修改主机名,那修改这个没用。 修改这个文件etc/sysconfig/network里的主机名这种方法可以实现永久修改主机名，需要重启Linux后才能生效。12NETWORKING=yesHOSTNAME=主机名 总结： #hostname 新主机名 修改/etc/sysconfig/network中的hostname的值 修改/etc/hosts文件]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[多电脑发布hexo博客]]></title>
     <url>%2F2018%2F10%2F12%2F%E5%A4%9A%E7%94%B5%E8%84%91%E5%8F%91%E5%B8%83hexo%E5%8D%9A%E5%AE%A2%2F</url>
     <content type="text"><![CDATA[多电脑发布hexo博客准备github账号在github上注册账号，并新建仓库。 安装nodejs按照网上的教程安装nodejs和hexo，教程很多不赘述了。 github上新建分支，将部署源码提交上去在博客库新建分支xxx，例如笔者命名为hexo分支，将部署源码提交上去。这里需要修改.gitignore文件，将不必要提交的本地配置等文件加进去。 另一台电脑安装hexo，clone部署源码另一台电脑安装和部署好hexo的环境，配置好Git，clone部署源码，就可以协同发布了。 #总结现在一个电脑上提交部署源码到git上，后面就是在git上协同发布博客的操作。电脑A123git add .git commit -m "提交部署源码"git push origin hexo //初次将部署源码提交上hexo分支 电脑B1234git pull //先更新下本地内容，再修改，再提交git add .git commit -m ""git push origin hexo 电脑A1234git pull //先更新下本地内容，再修改，再提交git add .git commit -m ""git push origin hexo]]></content>
