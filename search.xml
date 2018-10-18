@@ -3,12 +3,12 @@
   <entry>
     <title><![CDATA[hexo引用图片]]></title>
     <url>%2F2018%2F10%2F18%2Ftest-img%2F</url>
-    <content type="text"><![CDATA[hexo引用图片安装插件npm install https://github.com/CodeFalling/hexo-asset-image --save 使用语法跟正常的Markdown引用图片一样，只是路径使用的是相对路径。在你安装插件之后，使用hexo new &quot;新博客&quot;生成新博客时，_post文件夹下会有个跟新博客同名的文件夹，该文件夹下就是用来放置你引用的图片的。在博客中你可以这样使用xxxx![图片名称](文件夹名称/图片名称 &quot;图片标题&quot;)xxxx，xxxx指的是你的博客内容，图片名称就是显示在图片下面的名称，图片标题就是鼠标放上去显示的文字。例如我使用![我是图片](test-img/1.jpg &quot;测试图片&quot;)，实现效果为：]]></content>
+    <content type="text"><![CDATA[hexo引用图片安装插件npm install https://github.com/CodeFalling/hexo-asset-image --save 使用语法跟正常的Markdown引用图片一样，只是路径使用的是相对路径。在你安装插件之后，使用hexo new &quot;新博客&quot;生成新博客时。_post文件夹下会有个跟新博客同名的文件夹，该文件夹下就是用来放置你引用的图片的。在博客中你可以这样使用xxxx![图片名称](文件夹名称/图片名称 &quot;图片标题&quot;)xxxx，xxxx指的是你的博客内容，图片名称就是显示在图片下面的名称，图片标题就是鼠标放上去显示的文字。例如我使用![我是图片](test-img/1.jpg &quot;测试图片&quot;)，实现效果为：]]></content>
       <categories>
-        <category>test</category>
+        <category>编程</category>
       </categories>
       <tags>
-        <tag>test</tag>
+        <tag>编程</tag>
       </tags>
   </entry>
   <entry>
