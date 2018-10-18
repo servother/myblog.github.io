@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Linux下修改主机名]]></title>
     <url>%2F2018%2F10%2F18%2FLinux%E4%B8%8B%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%9C%BA%E5%90%8D%2F</url>
-    <content type="text"><![CDATA[LInux下修改主机名hostname + 主机名这种修改只是暂时有效，在当前Linux运行期间有效。重启后就失效了。 修改/etc/hosts这种方法文件里的主机名只是用来提供给dns解析的.如果你用不上dns,只需要修改主机名,那修改这个没用。 修改这个文件etc/sysconfig/network里的主机名这种方法可以实现永久修改主机名，需要重启Linux后才能生效。12NETWORKING=yesHOSTNAME=主机名 总结： #hostname 新主机名 修改/etc/sysconfig/network中的hostname的值 修改/etc/hosts文件]]></content>
+    <content type="text"><![CDATA[Linux下修改主机名hostname + 主机名这种修改只是暂时有效，在当前Linux运行期间有效。重启后就失效了。 修改/etc/hosts这种方法文件里的主机名只是用来提供给dns解析的.如果你用不上dns,只需要修改主机名,那修改这个没用。 修改这个文件etc/sysconfig/network里的主机名这种方法可以实现永久修改主机名，需要重启Linux后才能生效。12NETWORKING=yesHOSTNAME=主机名 总结： #hostname 新主机名 修改/etc/sysconfig/network中的hostname的值 修改/etc/hosts文件]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -41,8 +41,8 @@
         <category>rabbitmq</category>
       </categories>
       <tags>
-        <tag>rabbitmq</tag>
         <tag>php</tag>
+        <tag>rabbitmq</tag>
       </tags>
   </entry>
   <entry>
@@ -53,8 +53,8 @@
         <category>rabbitmq</category>
       </categories>
       <tags>
-        <tag>rabbitmq</tag>
         <tag>php</tag>
+        <tag>rabbitmq</tag>
       </tags>
   </entry>
   <entry>
@@ -76,8 +76,8 @@
         <category>PHP</category>
       </categories>
       <tags>
-        <tag>php</tag>
         <tag>ide</tag>
+        <tag>php</tag>
       </tags>
   </entry>
   <entry>
