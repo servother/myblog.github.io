@@ -4,7 +4,7 @@ date: 2018-10-18 16:07:14
 tags: Linux
 categories: Linux
 ---
-# LInux下修改主机名
+# Linux下修改主机名
 
 ## hostname + 主机名
 这种修改只是暂时有效，在当前Linux运行期间有效。重启后就失效了。
