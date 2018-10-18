@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[test img]]></title>
+    <url>%2F2018%2F10%2F18%2Ftest-img%2F</url>
+    <content type="text"><![CDATA[我是主题我是二级标题测试图片引用和上传上图为测试图片]]></content>
+      <categories>
+        <category>test</category>
+      </categories>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Linux下修改主机名]]></title>
     <url>%2F2018%2F10%2F18%2FLinux%E4%B8%8B%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%9C%BA%E5%90%8D%2F</url>
     <content type="text"><![CDATA[Linux下修改主机名hostname + 主机名这种修改只是暂时有效，在当前Linux运行期间有效。重启后就失效了。 修改/etc/hosts这种方法文件里的主机名只是用来提供给dns解析的.如果你用不上dns,只需要修改主机名,那修改这个没用。 修改这个文件etc/sysconfig/network里的主机名这种方法可以实现永久修改主机名，需要重启Linux后才能生效。12NETWORKING=yesHOSTNAME=主机名 总结： #hostname 新主机名 修改/etc/sysconfig/network中的hostname的值 修改/etc/hosts文件]]></content>
