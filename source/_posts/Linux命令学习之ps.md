@@ -17,8 +17,8 @@ categories: Linux
 2. R：运行中
 3. S：中断
 4. T：停止
-5. Z：僵死
-<!-- more -->
+5. Z：僵死  
+
 ## ps命令
 名称：ps
 使用权限：所有使用者
@@ -32,6 +32,7 @@ categories: Linux
 -au   显示较详细的信息
 -aux  显示所有包含其他使用者的进程信息
 ```
+<!-- more -->
 举例说明au(x)所显示的每列所指内容。-aux的输出格式:
 `USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND`
 每列所指内容分别为：
