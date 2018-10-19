@@ -443,8 +443,7 @@
 
       
         
-          
-            <h1 id="ps命令详解"><a href="#ps命令详解" class="headerlink" title="ps命令详解"></a>ps命令详解</h1><h2 id="Linux上进程有五种状态"><a href="#Linux上进程有五种状态" class="headerlink" title="Linux上进程有五种状态"></a>Linux上进程有五种状态</h2><ol>
+          <h1 id="ps命令详解"><a href="#ps命令详解" class="headerlink" title="ps命令详解"></a>ps命令详解</h1><h2 id="Linux上进程有五种状态"><a href="#Linux上进程有五种状态" class="headerlink" title="Linux上进程有五种状态"></a>Linux上进程有五种状态</h2><ol>
 <li>运行（正在运行或在运行队列中等待）</li>
 <li>中断（休眠中，受阻，在等待某个条件的行程或接受到信号）</li>
 <li>不可中断</li>
@@ -459,12 +458,13 @@
 <li>Z：僵死  </li>
 </ol>
 <h2 id="ps命令"><a href="#ps命令" class="headerlink" title="ps命令"></a>ps命令</h2><p>名称：ps<br>使用权限：所有使用者<br>使用方式：ps /[options/] /[–help/]<br>说明：显示瞬间进程的动态<br>参数：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//ps的参数较多，以下仅列出常用几个</span><br><span class="line">-A    列出所有进程</span><br><span class="line">-w    显示加宽可以显示更多的信息</span><br><span class="line">-au   显示较详细的信息</span><br><span class="line">-aux  显示所有包含其他使用者的进程信息</span><br></pre></td></tr></table></figure></p>
-<p>举例说明au(x)所显示的每列所指内容。-aux的输出格式:<br><code>USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND</code><br>每列所指内容分别为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">USER：进程拥有者</span><br><span class="line">PID：进程ID</span><br><span class="line">%CPU：占用的CPU使用率</span><br><span class="line">%MEM：占用的内存使用率</span><br><span class="line">VSZ：占用的虚拟内存大小</span><br><span class="line">RSS：占用的磁盘大小</span><br><span class="line">TTY：进程所属的终端控制台</span><br><span class="line">STAT：进程状态码（下面有详细说明）</span><br><span class="line">START：进程开始时间</span><br><span class="line">TIME：执行时间</span><br><span class="line">COMMAND：执行的命令</span><br></pre></td></tr></table></figure></p>
-<p>其中进程状态码有以下等：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">D: 不可中断的静止   </span><br><span class="line">R: 正在执行中   </span><br><span class="line">S: 静止状态   </span><br><span class="line">T: 暂停执行   </span><br><span class="line">Z: 不存在但暂时无法消除，僵死状态  </span><br><span class="line">W: 没有足够的记忆体分页可分配   </span><br><span class="line">&lt;: 高优先序的进程   </span><br><span class="line">N: 低优先序的进程   </span><br><span class="line">L: 有记忆体分页分配并锁在记忆体内</span><br></pre></td></tr></table></figure></p>
-<p>最常用的方法是ps -aux,然后再利用一个管道符号导向到grep去查找特定的进程,然后再对特定的进程进行操作。</p>
-<h2 id="与top的区别"><a href="#与top的区别" class="headerlink" title="与top的区别"></a>与top的区别</h2><p>ps是提供给你当前进程的快照，而top是即时显示活跃的进程。更多top相关的命令可查阅top命令的文章</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/19/Linux命令学习之ps/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
