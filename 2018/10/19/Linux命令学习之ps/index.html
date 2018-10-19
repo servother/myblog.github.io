@@ -103,23 +103,25 @@
 
 
 
-  <meta name="description" content="闲来无事，折腾折腾！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="GT的博客">
-<meta property="og:url" content="http://cotcloud.cn/tags/hexo/index.html">
+  <meta name="description" content="ps命令详解Linux上进程有五种状态 运行（正在运行或在运行队列中等待） 中断（休眠中，受阻，在等待某个条件的行程或接受到信号） 不可中断 僵死（进程已经终止，但进程描述符存在） 停止（进程收到SIGSTOP, SIGSTP, SIGTIN, SIGTOU信号后停止运行）  ps工具标识进程的五种状态码 D：不可中断 R：运行中 S：中断 T：停止 Z：僵死">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux命令学习之ps">
+<meta property="og:url" content="http://cotcloud.cn/2018/10/19/Linux命令学习之ps/index.html">
 <meta property="og:site_name" content="GT的博客">
-<meta property="og:description" content="闲来无事，折腾折腾！">
+<meta property="og:description" content="ps命令详解Linux上进程有五种状态 运行（正在运行或在运行队列中等待） 中断（休眠中，受阻，在等待某个条件的行程或接受到信号） 不可中断 僵死（进程已经终止，但进程描述符存在） 停止（进程收到SIGSTOP, SIGSTP, SIGTIN, SIGTOU信号后停止运行）  ps工具标识进程的五种状态码 D：不可中断 R：运行中 S：中断 T：停止 Z：僵死">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-19T03:30:49.637Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GT的博客">
-<meta name="twitter:description" content="闲来无事，折腾折腾！">
+<meta name="twitter:title" content="Linux命令学习之ps">
+<meta name="twitter:description" content="ps命令详解Linux上进程有五种状态 运行（正在运行或在运行队列中等待） 中断（休眠中，受阻，在等待某个条件的行程或接受到信号） 不可中断 僵死（进程已经终止，但进程描述符存在） 停止（进程收到SIGSTOP, SIGSTP, SIGTIN, SIGTOU信号后停止运行）  ps工具标识进程的五种状态码 D：不可中断 R：运行中 S：中断 T：停止 Z：僵死">
 
 
 
 
 
 
-  <link rel="canonical" href="http://cotcloud.cn/tags/hexo/"/>
+  <link rel="canonical" href="http://cotcloud.cn/2018/10/19/Linux命令学习之ps/"/>
 
 
 
@@ -129,7 +131,7 @@
   };
 </script>
 
-  <title>标签: hexo | GT的博客</title>
+  <title>Linux命令学习之ps | GT的博客</title>
   
 
 
@@ -176,7 +178,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -335,87 +337,208 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>hexo<small>标签</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cotcloud.cn/2018/10/19/Linux命令学习之ps/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GroveTind">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GT的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/10/09/hello-world/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">Linux命令学习之ps</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-09T17:11:20+08:00"
-              content="2018-10-09" >
-          10-09
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-19T10:59:27+08:00">2018-10-19</time>
+            
 
-    </header>
-  </article>
+            
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ps命令详解"><a href="#ps命令详解" class="headerlink" title="ps命令详解"></a>ps命令详解</h1><h2 id="Linux上进程有五种状态"><a href="#Linux上进程有五种状态" class="headerlink" title="Linux上进程有五种状态"></a>Linux上进程有五种状态</h2><ol>
+<li>运行（正在运行或在运行队列中等待）</li>
+<li>中断（休眠中，受阻，在等待某个条件的行程或接受到信号）</li>
+<li>不可中断</li>
+<li>僵死（进程已经终止，但进程描述符存在）</li>
+<li>停止（进程收到SIGSTOP, SIGSTP, SIGTIN, SIGTOU信号后停止运行）</li>
+</ol>
+<h2 id="ps工具标识进程的五种状态码"><a href="#ps工具标识进程的五种状态码" class="headerlink" title="ps工具标识进程的五种状态码"></a>ps工具标识进程的五种状态码</h2><ol>
+<li>D：不可中断</li>
+<li>R：运行中</li>
+<li>S：中断</li>
+<li>T：停止</li>
+<li>Z：僵死<a id="more"></a>
+<h2 id="ps命令"><a href="#ps命令" class="headerlink" title="ps命令"></a>ps命令</h2>名称：ps<br>使用权限：所有使用者<br>使用方式：ps /[options/] /[–help/]<br>说明：显示瞬间进程的动态<br>参数：  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//ps的参数较多，以下仅列出常用几个</span><br><span class="line">-A    列出所有进程</span><br><span class="line">-w    显示加宽可以显示更多的信息</span><br><span class="line">-au   显示较详细的信息</span><br><span class="line">-aux  显示所有包含其他使用者的进程信息</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>举例说明au(x)所显示的每列所指内容。-aux的输出格式:<br><code>USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND</code><br>每列所指内容分别为：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">USER：进程拥有者</span><br><span class="line">PID：进程ID</span><br><span class="line">%CPU：占用的CPU使用率</span><br><span class="line">%MEM：占用的内存使用率</span><br><span class="line">VSZ：占用的虚拟内存大小</span><br><span class="line">RSS：占用的磁盘大小</span><br><span class="line">TTY：进程所属的终端控制台</span><br><span class="line">STAT：进程状态码（下面有详细说明）</span><br><span class="line">START：进程开始时间</span><br><span class="line">TIME：执行时间</span><br><span class="line">COMMAND：执行的命令</span><br></pre></td></tr></table></figure></p>
+<p>其中进程状态码有以下等：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">D: 不可中断的静止   </span><br><span class="line">R: 正在执行中   </span><br><span class="line">S: 静止状态   </span><br><span class="line">T: 暂停执行   </span><br><span class="line">Z: 不存在但暂时无法消除，僵死状态  </span><br><span class="line">W: 没有足够的记忆体分页可分配   </span><br><span class="line">&lt;: 高优先序的进程   </span><br><span class="line">N: 低优先序的进程   </span><br><span class="line">L: 有记忆体分页分配并锁在记忆体内</span><br></pre></td></tr></table></figure></p>
+<p>最常用的方法是ps -aux,然后再利用一个管道符号导向到grep去查找特定的进程,然后再对特定的进程进行操作。</p>
+<h2 id="与top的区别"><a href="#与top的区别" class="headerlink" title="与top的区别"></a>与top的区别</h2><p>ps是提供给你当前进程的快照，而top是即时显示活跃的进程。更多top相关的命令可查阅top命令的文章</p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat_qcode.png" alt="GroveTind wechat" style="width: 200px; max-width: 100%;"/>
+    <div>觉得文章对您有帮助，打赏一下吧</div>
+</div>
+
+      </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/18/test-img/" rel="next" title="hexo引用图片">
+                <i class="fa fa-chevron-left"></i> hexo引用图片
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -436,8 +559,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -556,6 +688,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ps命令详解"><span class="nav-number">1.</span> <span class="nav-text">ps命令详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux上进程有五种状态"><span class="nav-number">1.1.</span> <span class="nav-text">Linux上进程有五种状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ps工具标识进程的五种状态码"><span class="nav-number">1.2.</span> <span class="nav-text">ps工具标识进程的五种状态码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ps命令"><span class="nav-number">1.3.</span> <span class="nav-text">ps命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与top的区别"><span class="nav-number">1.4.</span> <span class="nav-text">与top的区别</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -693,6 +841,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+
+
 
   
 
