@@ -112,7 +112,7 @@
 <meta property="og:description" content="socket通讯原理网络间进程如何进行通讯本地的进程间通讯我们知道有很多种实现方式，可以总结为这四类：消息传递（管道，FIFO，消息队列），同步（互斥量、条件变量、读写锁、文件和写记录锁、信号量），共享内存，远程过程调用。那么网络间进程通讯如何实现呢？解决这个问题，我们首先要思考如何唯一标识网络间的进程。在本地进程间，可以通过PID来唯一标识，但在网络间这明显是行不通。其实tcp/ip协议簇已经帮">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://cotcloud.cn/2018/10/30/了解socket/1.png">
-<meta property="og:updated_time" content="2018-10-30T08:36:14.762Z">
+<meta property="og:updated_time" content="2018-10-30T08:41:12.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络间进程通讯之socket">
 <meta name="twitter:description" content="socket通讯原理网络间进程如何进行通讯本地的进程间通讯我们知道有很多种实现方式，可以总结为这四类：消息传递（管道，FIFO，消息队列），同步（互斥量、条件变量、读写锁、文件和写记录锁、信号量），共享内存，远程过程调用。那么网络间进程通讯如何实现呢？解决这个问题，我们首先要思考如何唯一标识网络间的进程。在本地进程间，可以通过PID来唯一标识，但在网络间这明显是行不通。其实tcp/ip协议簇已经帮">
@@ -467,13 +467,13 @@
 <ol>
 <li>sockfd参数，客户端的socket描述符。</li>
 <li>addrSrv参数，服务器的socket地址。</li>
-<li>addrLen参数，socket地址的长度。</li>
+<li>addrLen参数，socket地址的长度。   </li>
 </ol>
 <h3 id="accept-int-sockfd-addr-addrLen"><a href="#accept-int-sockfd-addr-addrLen" class="headerlink" title="accept(int sockfd, _ addr, _ addrLen)"></a>accept(int sockfd, _ <em>addr, _ </em>addrLen)</h3><p>accept()函数。当服务器调用socket(),bind(),listen()函数后就会监听生成的socket地址,客户端调用socket(),connect()函数后就会向服务器发出连接请求，服务器监听到这个连接请求后，就会调用accept()函数去接收客户端的连接请求。<br>到此服务器和客户端就连接上了，之后就是进行i/o操作。</p>
 <ol>
 <li>sockfd参数，服务器创建的socket描述符。</li>
 <li>addr参数，指向一个结构体类型的指针。用于返回客户端的协议地址。</li>
-<li>addrLen参数，协议地址的长度。<br>如果accept()成功，则返回一个由内核生成的新的描述符，表示与返回客户端的连接。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">说明：accept()函数的第一个参数是服务器调用socket()函数创建的“被监听socket描述符”，而accept()函数调用成功后返回的是“已连接描述符”。</span><br><span class="line">“被监听socket描述符”通常只在服务器启动时仅仅创建一个，它在该服务器的生命周期内一直存在。而“已连接描述符”是由内核为每一个（服务器接受了客户端的连接）连接创建的描述符，在服务器完成了对某个客户端的服务后，相应的“已连接描述符”就会被关闭。</span><br></pre></td></tr></table></figure>
+<li>addrLen参数，协议地址的长度。<br>如果accept()成功，则返回一个由内核生成的新的描述符，表示与返回客户端的连接。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">说明：accept()函数的第一个参数是服务器调用socket()函数创建的“被监听socket描述符”；</span><br><span class="line">而accept()函数调用成功后返回的是“已连接描述符”。</span><br><span class="line">“被监听socket描述符”通常只在服务器启动时仅仅创建一个，它在该服务器的生命周期内一直存在。</span><br><span class="line">而“已连接描述符”是由内核为每一个（服务器接受了客户端的连接）连接创建的描述符，</span><br><span class="line">在服务器完成了对某个客户端的服务后，相应的“已连接描述符”就会被关闭。</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h3 id="read-write-等函数"><a href="#read-write-等函数" class="headerlink" title="read()/write()等函数"></a>read()/write()等函数</h3><h4 id="I-O操作。"><a href="#I-O操作。" class="headerlink" title="I/O操作。"></a>I/O操作。</h4><p>read函数是负责从fd中读取内容read函数是负责从fd中读取内容.当读成功时，read返回实际所读的字节数，如果返回的值是0表示已经读到文件的结束了，小于0表示出现了错误。如果错误为EINTR说明读是由中断引起的，如果是ECONNREST表示网络连接出了问题。</p>
