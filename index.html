@@ -356,6 +356,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cotcloud.cn/2018/10/30/了解socket/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GroveTind">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GT的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/30/了解socket/" itemprop="url">网络间进程通讯之socket</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-30T14:32:18+08:00">2018-10-30</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Socket/" itemprop="url" rel="index"><span itemprop="name">Socket</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="socket通讯原理"><a href="#socket通讯原理" class="headerlink" title="socket通讯原理"></a>socket通讯原理</h1><h2 id="网络间进程如何进行通讯"><a href="#网络间进程如何进行通讯" class="headerlink" title="网络间进程如何进行通讯"></a>网络间进程如何进行通讯</h2><p>本地的进程间通讯我们知道有很多种实现方式，可以总结为这四类：消息传递（管道，FIFO，消息队列），同步（互斥量、条件变量、读写锁、文件和写记录锁、信号量），共享内存，远程过程调用。<br>那么网络间进程通讯如何实现呢？<br>解决这个问题，我们首先要思考如何唯一标识网络间的进程。在本地进程间，可以通过PID来唯一标识，但在网络间这明显是行不通。<br>其实tcp/ip协议簇已经帮我们解决了这个问题，通过网络层的ip协议帮助我们确定网络间的唯一主机，而传输层的“协议+端口”可以确定主机中唯一的应用程序（进程）。<br>这样利用（ip，协议，端口）三元数组就能唯一标识网络间的进程了。<br>使用tcp/ip协议簇的应用程序通常都采用应用编程接口（socket和TLI）来进行通讯。而TLI这种似乎已经被淘汰了，现在基本都是使用的socket实现通讯。</p>
+<h2 id="什么是socket？"><a href="#什么是socket？" class="headerlink" title="什么是socket？"></a>什么是socket？</h2><p>socket一词源于UNIX，而UNIX的哲学理论就是“一切皆是文件，都可以通过open、write、read、close模式来操作”。所以socket其实就是一个“文件”。<br>也是通过一些实现open，write，read，close操作的函数使用socket。</p>
+<h2 id="常用的操作socket的函数"><a href="#常用的操作socket的函数" class="headerlink" title="常用的操作socket的函数"></a>常用的操作socket的函数</h2><p>socket(int domain, int type, int protocol)<br>1.socket()函数，对应于常用的打开文件的函数。普通文件的打开操作返回一个文件描述字，而socket()用于创建一个socket描述符（socket descriptor），它唯一标识一个socket。<br>这个socket描述字跟文件描述字一样，后续的操作都有用到它，把它作为参数，通过它来进行一些读写操作。正如fopen()函数一样，socket()函数也需要传入一定的参数来创建特定的socket描述符。<br>domain参数指定socket的协议簇，协议簇决定了socket的地址类型。例如AF_INET决定了要用Ipv4地址(32位的)和端口号(16位的)组合的地址类型。还有诸如AF_INET6、AF_LOCAL等就不细说了。<br>type参数指定socket的类型。常用的socket类型有，SOCK_STREAM、SOCK_DGRAM、SOCK_RAW、SOCK_PACKET、SOCK_SEQPACKET等等。<br>protocol参数故名思意，就是指定协议。常用的协议有，IPPROTO_TCP、IPPTOTO_UDP、IPPROTO_SCTP、IPPROTO_TIPC等。<br>其中type和protocol不是随意进行组合的。<br>当我们调用socket()函数创建一个socket描述符时，返回的描述符是存在于协议簇中的，没有一个具体的地址。如果想要给描述符赋值一个地址，我们必须调用bind()函数，否则我们调用listen(),connect()函数时，系统会随机分配一个端口。</p>
+<p>bind(int sockfd, _ <em>addr, _ </em>addrLen)<br>2.bind()函数,上面我们说到，通过socket()函数创建的socket是没有具体地址的，而我们想要给它赋值一个地址就需要调用bind()函数。<br>sockfd参数，socket描述符。通过socket()函数创建的socket描述符。<br>addr参数，给socket描述符绑定的协议地址。这个协议地址跟调用socket()函数传入的协议簇是对应相关的。<br>addrLen参数，协议地址长度。<br>通常服务器在启动时都会绑定一个协议地址（ip+端口），以便提供服务，客户端通过连接这个协议地址来连接服务器；而客户端则不用，由系统随机产生一个端口号和自身ip组合。</p>
+<p>listen(int sockfd, int backlog)<br>3.listen()函数。通常socket()函数创建的socket是主动类型的，通过listen()函数将socket变成被动类型，等待客户端来连接。<br>sockfd参数，被监听的socket描述符。<br>backlog参数，被监听的socket可以排队的最大连接个数。<br>通常作为一个服务器，在调用完socket()，bind()函数后，就会调用listen()来监听socket，如果有客户端调用connect()函数发出连接请求，服务器就会接受到这个请求。</p>
+<p>connect(int sockfd, int addrSrv, int addrLen)<br>4.connect()函数。客户端调用该函数向服务器发出连接请求，等待服务器响应。<br>sockfd参数，客户端的socket描述符。<br>addrSrv参数，服务器的socket地址。<br>addrLen参数，socket地址的长度。</p>
+<p>accept(int sockfd, _ <em>addr, _ </em>addrLen)<br>5.accept()函数。当服务器调用socket(),bind(),listen()函数后就会监听生成的socket地址,客户端调用socket(),connect()函数后就会向服务器发出连接请求，服务器监听到这个连接请求后，就会调用accept()函数去接收客户端的连接请求。<br>到此服务器和客户端就连接上了，之后就是进行i/o操作。<br>sockfd参数，服务器创建的socket描述符。<br>addr参数，指向一个结构体类型的指针。用于返回客户端的协议地址。<br>addrLen参数，协议地址的长度。<br>如果accept()成功，则返回一个由内核生成的新的描述符，表示与返回客户端的连接。<br>说明：accept()函数的第一个参数是服务器调用socket()函数创建的“被监听socket描述符”，而accept()函数调用成功后返回的是“已连接描述符”。<br>“被监听socket描述符”通常只在服务器启动时仅仅创建一个，它在该服务器的生命周期内一直存在。而“已连接描述符”是由内核为每一个（服务器接受了客户端的连接）连接创建的描述符，在服务器完成了对某个客户端的服务后，相应的“已连接描述符”就会被关闭。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/30/了解socket/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://cotcloud.cn/2018/10/19/Linux命令学习之ps/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1672,155 +1824,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cotcloud.cn/2018/04/20/demo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="GroveTind">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GT的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/20/demo/" itemprop="url">入门</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T10:43:27+08:00">2018-04-20</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<p>This is a demo for studying to write blog by markdown, welcome to my <a href="https://github.com/servother" target="_blank" rel="noopener">github</a>!</p>
-<h2 id="简单入门"><a href="#简单入门" class="headerlink" title="简单入门"></a>简单入门</h2><h3 id="1-命令"><a href="#1-命令" class="headerlink" title="1.命令"></a>1.命令</h3><h4 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"文章名"</span>  //创建新的博客文章</span><br></pre></td></tr></table></figure>
-<h4 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//当你编辑完新的文章，需要下面的命令更新并发布到github上</span><br><span class="line">$ hexo clean </span><br><span class="line">$ hexo g -d</span><br></pre></td></tr></table></figure>
-<h3 id="2-关于"><a href="#2-关于" class="headerlink" title="2.关于"></a>2.关于</h3><p>更多关于<a href="https://hexo.io/docs" target="_blank" rel="noopener">hexo</a>的使用可以到官网查看！</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1861,7 +1871,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1888,7 +1898,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">7</span>
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1917,7 +1929,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
