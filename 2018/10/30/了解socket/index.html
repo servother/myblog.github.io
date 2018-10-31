@@ -112,7 +112,7 @@
 <meta property="og:description" content="socket通讯原理网络间进程如何进行通讯本地的进程间通讯我们知道有很多种实现方式，可以总结为这四类：消息传递（管道，FIFO，消息队列），同步（互斥量、条件变量、读写锁、文件和写记录锁、信号量），共享内存，远程过程调用。那么网络间进程通讯如何实现呢？解决这个问题，我们首先要思考如何唯一标识网络间的进程。在本地进程间，可以通过PID来唯一标识，但在网络间这明显是行不通。其实tcp/ip协议簇已经帮">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://cotcloud.cn/2018/10/30/了解socket/1.png">
-<meta property="og:updated_time" content="2018-10-30T08:55:12.486Z">
+<meta property="og:updated_time" content="2018-10-31T01:15:01.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络间进程通讯之socket">
 <meta name="twitter:description" content="socket通讯原理网络间进程如何进行通讯本地的进程间通讯我们知道有很多种实现方式，可以总结为这四类：消息传递（管道，FIFO，消息队列），同步（互斥量、条件变量、读写锁、文件和写记录锁、信号量），共享内存，远程过程调用。那么网络间进程通讯如何实现呢？解决这个问题，我们首先要思考如何唯一标识网络间的进程。在本地进程间，可以通过PID来唯一标识，但在网络间这明显是行不通。其实tcp/ip协议簇已经帮">
@@ -448,7 +448,7 @@
 <h2 id="常用的操作socket的函数"><a href="#常用的操作socket的函数" class="headerlink" title="常用的操作socket的函数"></a>常用的操作socket的函数</h2><h3 id="socket-int-domain-int-type-int-protocol"><a href="#socket-int-domain-int-type-int-protocol" class="headerlink" title="socket(int domain, int type, int protocol)"></a>socket(int domain, int type, int protocol)</h3><p>socket()函数，对应于常用的打开文件的函数。普通文件的打开操作返回一个文件描述字，而socket()用于创建一个socket描述符（socket descriptor），它唯一标识一个socket。<br>这个socket描述字跟文件描述字一样，后续的操作都有用到它，把它作为参数，通过它来进行一些读写操作。正如fopen()函数一样，socket()函数也需要传入一定的参数来创建特定的socket描述符。</p>
 <pre><code>1. domain参数指定socket的协议簇，协议簇决定了socket的地址类型。例如AF_INET决定了要用Ipv4地址(32位的)和端口号(16位的)组合的地址类型。还有诸如AF_INET6、AF_LOCAL等就不细说了。
 2. type参数指定socket的类型。常用的socket类型有，SOCK_STREAM、SOCK_DGRAM、SOCK_RAW、SOCK_PACKET、SOCK_SEQPACKET等等。
-3. protocol参数故名思意，就是指定协议。常用的协议有，IPPROTO_TCP、IPPTOTO_UDP、IPPROTO_SCTP、IPPROTO_TIPC等。   
+3. protocol参数顾名思义，就是指定协议。常用的协议有，IPPROTO_TCP、IPPTOTO_UDP、IPPROTO_SCTP、IPPROTO_TIPC等。   
 </code></pre><p>其中type和protocol不是随意进行组合的。<br>当我们调用socket()函数创建一个socket描述符时，返回的描述符是存在于协议簇中的，没有一个具体的地址。如果想要给描述符赋值一个地址，我们必须调用bind()函数，否则我们调用listen(),connect()函数时，系统会随机分配一个端口。</p>
 <a id="more"></a>
 <h3 id="bind-int-sockfd-addr-addrLen"><a href="#bind-int-sockfd-addr-addrLen" class="headerlink" title="bind(int sockfd, _ *addr, _ *addrLen)"></a>bind(int sockfd, _ *addr, _ *addrLen)</h3><p>bind()函数,上面我们说到，通过socket()函数创建的socket是没有具体地址的，而我们想要给它赋值一个地址就需要调用bind()函数。</p>
