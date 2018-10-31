@@ -356,6 +356,185 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://cotcloud.cn/2018/10/31/趣谈浏览一个页面发生的事/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="GroveTind">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="GT的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/31/趣谈浏览一个页面发生的事/" itemprop="url">浏览一个页面发生的事</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-31T14:35:26+08:00">2018-10-31</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/web/" itemprop="url" rel="index"><span itemprop="name">web</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="在浏览器出入URL到显示页面的过程"><a href="#在浏览器出入URL到显示页面的过程" class="headerlink" title="在浏览器出入URL到显示页面的过程"></a>在浏览器出入URL到显示页面的过程</h2><p>先看下面一张图：<br><img src="/2018/10/31/趣谈浏览一个页面发生的事/1.png" alt="图解页面显示过程" title="图解页面显示过程"></p>
+<ol>
+<li>当用户在浏览器输入一个URL后，浏览器会利用DNS协议查找域名对应的ip，这时找到了要连接的服务器；</li>
+<li>然后浏览器通过http协议生成一个http请求报文，并向web服务器发送这个http请求报文，期间通过tcp协议与服务器建立连接；</li>
+<li>与服务器建立连接后，在网络层通过ip协议发送数据，ip数据包在路由之间使用OPSF协议进行路由选择，路由器在于服务器通信时，需要使用ARP协议将ip地址转成MAC地址；</li>
+<li>服务器通过TCP协议接收到请求和通过http协议处理请求，同样通过http协议生成要返回的HTML页面和使用TCP协议返回页面内容。</li>
+<li>浏览器接收到页面内容，渲染页面。<br>这张图也简单解释了各个协议与HTTP协议的关系。<h2 id="OSI七层体系和TCP-IP体系"><a href="#OSI七层体系和TCP-IP体系" class="headerlink" title="OSI七层体系和TCP/IP体系"></a>OSI七层体系和TCP/IP体系</h2><ul>
+<li>OSI七层体系</li>
+</ul>
+</li>
+<li>应用层</li>
+<li>表示层</li>
+<li>会话层</li>
+<li>运输层</li>
+<li>网络层</li>
+<li>数据链路层</li>
+<li>物理层<ul>
+<li>TCP/IP体系</li>
+</ul>
+</li>
+<li>应用层（对应OSI中的上三层：应用层、表示层、会话层；各种应用层协议如http,smtp,ftp,telnet协议等）</li>
+<li>运输层（TCP，UDP协议）</li>
+<li>网络层（IP层）</li>
+<li>网络接口层（对应OSI中的最下面两层：数据链路层、物理层）<ul>
+<li>五层体系</li>
+</ul>
+</li>
+<li>应用层</li>
+<li>运输层</li>
+<li>网络层</li>
+<li>数据链路层</li>
+<li>物理层<br>相对于OSI和TCP/IP体系，提出的一种折中的描述。其实就是将TCP/IP体系的网络接口层还原成数据链路层和物理层了，这样结合两种体系的描述相对更好理解。<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2></li>
+<li>1XX：信息性状态码。如：接收的请求正在处理。</li>
+<li>2XX：成功状态码。如：请求成功处理。</li>
+<li>3XX：重定向状态码。如：需要附加操作以完成请求。</li>
+<li>4XX：客户端错误码。如：服务器无法进行操作。</li>
+<li>5XX：服务器错误码。如：服务器处理请求出错。<h2 id="HTTP中的长连接和短连接"><a href="#HTTP中的长连接和短连接" class="headerlink" title="HTTP中的长连接和短连接"></a>HTTP中的长连接和短连接</h2>在HTTP/1.0中默认使用短连接，即客户端和服务器每进行一次http操作，就建立一次连接，任务结束就断开连接。如果客户端请求的HTML中包含其他web资源（如js文件，css文件，图片等），每有一个其他的web资源都会新建一个http会话。<br>而从HTTP/1.1起，默认使用长连接。使用长连接的HTTP协议，会在响应头中加入这行代码<code>Connection:keep-alive</code><br>keep-alive也不是永久保持连接的，这个保持时间是在服务器（如apache）中进行设置的，同时长连接需要客户端和服务器都支持。<br><em>HTTP协议的长连接和短连接，实质上是TCP协议的长连接和短连接。</em><br><a href="https://www.cnblogs.com/gotodsp/p/6366163.html" target="_blank" rel="noopener">详细的长连接和短连接介绍</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://cotcloud.cn/2018/10/30/了解socket/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1679,151 +1858,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cotcloud.cn/2018/10/08/IDE破解教程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="GroveTind">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="GT的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/08/IDE破解教程/" itemprop="url">IDE破解教程</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-08T15:00:00+08:00">2018-10-08</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <a id="more"></a>
-<p>分享一个IDE破解教程，<a href="http://idea.lanyus.com" target="_blank" rel="noopener">我是网址</a></p>
-<h3 id="修改hosts文件"><a href="#修改hosts文件" class="headerlink" title="修改hosts文件"></a>修改hosts文件</h3><p>win下找到hosts文件，在hosts文件中添加“0.0.0.0  account.jetbrains.com”这行内容。<br>Mac直接在终端使用vim编辑<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi /etc/hosts</span><br></pre></td></tr></table></figure></p>
-<h3 id="复制注册码"><a href="#复制注册码" class="headerlink" title="复制注册码"></a>复制注册码</h3><p>打开<a href="http://idea.lanyus.com" target="_blank" rel="noopener">网址</a>，点击获取注册码，copy过去就OK了</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1871,7 +1905,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1900,7 +1934,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1931,7 +1967,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
