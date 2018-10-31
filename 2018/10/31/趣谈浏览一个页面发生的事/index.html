@@ -112,7 +112,7 @@
 <meta property="og:description" content="在浏览器出入URL到显示页面的过程先看下面一张图：123451. 当用户在浏览器输入一个URL后，浏览器会利用DNS协议查找域名对应的ip，这时找到了要连接的服务器；2. 然后浏览器通过http协议生成一个http请求报文，并向web服务器发送这个http请求报文，期间通过tcp协议与服务器建立连接；3. 与服务器建立连接后，在网络层通过ip协议发送数据，ip数据包在路由之间使用OPSF协议进行路">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://cotcloud.cn/2018/10/31/趣谈浏览一个页面发生的事/1.png">
-<meta property="og:updated_time" content="2018-10-31T07:49:00.595Z">
+<meta property="og:updated_time" content="2018-10-31T07:52:31.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览一个页面发生的事">
 <meta name="twitter:description" content="在浏览器出入URL到显示页面的过程先看下面一张图：123451. 当用户在浏览器输入一个URL后，浏览器会利用DNS协议查找域名对应的ip，这时找到了要连接的服务器；2. 然后浏览器通过http协议生成一个http请求报文，并向web服务器发送这个http请求报文，期间通过tcp协议与服务器建立连接；3. 与服务器建立连接后，在网络层通过ip协议发送数据，ip数据包在路由之间使用OPSF协议进行路">
@@ -473,7 +473,7 @@
 </li>
 </ul>
 <p>相对于OSI和TCP/IP体系，提出的一种折中的描述。其实就是将TCP/IP体系的网络接口层还原成数据链路层和物理层了，这样结合两种体系的描述相对更好理解。</p>
-<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 1XX：信息性状态码。如：接收的请求正在处理。</span><br><span class="line">2. 2XX：成功状态码。如：请求成功处理。</span><br><span class="line">3. 3XX：重定向状态码。如：需要附加操作以完成请求。</span><br><span class="line">4. 4XX：客户端错误码。如：服务器无法进行操作。</span><br><span class="line">5. 5XX：服务器错误码。如：服务器处理请求出错。</span><br></pre></td></tr></table></figure>
+<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1XX：信息性状态码。如：接收的请求正在处理。</span><br><span class="line">2XX：成功状态码。如：请求成功处理。</span><br><span class="line">3XX：重定向状态码。如：需要附加操作以完成请求。</span><br><span class="line">4XX：客户端错误码。如：服务器无法进行操作。</span><br><span class="line">5XX：服务器错误码。如：服务器处理请求出错。</span><br></pre></td></tr></table></figure>
 <h2 id="HTTP中的长连接和短连接"><a href="#HTTP中的长连接和短连接" class="headerlink" title="HTTP中的长连接和短连接"></a>HTTP中的长连接和短连接</h2><p>在HTTP/1.0中默认使用短连接，即客户端和服务器每进行一次http操作，就建立一次连接，任务结束就断开连接。如果客户端请求的HTML中包含其他web资源（如js文件，css文件，图片等），每有一个其他的web资源都会新建一个http会话。<br>而从HTTP/1.1起，默认使用长连接。使用长连接的HTTP协议，会在响应头中加入这行代码<code>Connection:keep-alive</code><br>keep-alive也不是永久保持连接的，这个保持时间是在服务器（如apache）中进行设置的，同时长连接需要客户端和服务器都支持。<br><em>HTTP协议的长连接和短连接，实质上是TCP协议的长连接和短连接。</em><br><a href="https://www.cnblogs.com/gotodsp/p/6366163.html" target="_blank" rel="noopener">详细的长连接和短连接介绍</a></p>
 
       
