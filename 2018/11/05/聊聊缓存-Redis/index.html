@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="GT的博客">
 <meta property="og:description" content="分布式缓存Redis为什么使用Redis？使用Redis主要是考虑项目的性能和并发。从性能上来说：当我们执行一个繁琐但是不经常变动的SQL时，重复的浪费时间在执行SQL上了，此时加上缓存就可以直接访问缓存，大大节约了访问数据库的时间。从并发性上说：当很多个连接去访问数据库，数据库很容易出现异常等问题。当然还有Redis具有分布式锁等等优点。 单线程的Redis为什么这么快？首先，Redis是常驻内">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-05T03:31:24.096Z">
+<meta property="og:updated_time" content="2018-11-05T03:34:23.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简单聊聊缓存-Redis">
 <meta name="twitter:description" content="分布式缓存Redis为什么使用Redis？使用Redis主要是考虑项目的性能和并发。从性能上来说：当我们执行一个繁琐但是不经常变动的SQL时，重复的浪费时间在执行SQL上了，此时加上缓存就可以直接访问缓存，大大节约了访问数据库的时间。从并发性上说：当很多个连接去访问数据库，数据库很容易出现异常等问题。当然还有Redis具有分布式锁等等优点。 单线程的Redis为什么这么快？首先，Redis是常驻内">
@@ -448,8 +448,11 @@
 <li>Hash。特别适合用于存储对象。有些单点登录的实现，就是借助Redis的Hash缓存cookID和对应的用户信息。</li>
 <li>List。字符串列表，按照插入顺序排序。这种数据类型可以做一些简单的队列，也可以利用lrange实现redis的分页功能。</li>
 <li>Set。因为set堆放的是一些不可重复值的集合。可以做去重的作用。</li>
-<li>Sorted Set。相对于Set，多了一个权重参数sorce。可以根据sorce进行排序，例如排行榜等。<a id="more"></a>
-<h2 id="Redis的过期策略和内存淘汰机制"><a href="#Redis的过期策略和内存淘汰机制" class="headerlink" title="Redis的过期策略和内存淘汰机制"></a>Redis的过期策略和内存淘汰机制</h2>我们已经知道Redis是在内存中工作的，如果一直不停的往Redis写数据，那内存很快就不够用了，所以需要进行删除。<br>一般来说，删除策略有三种：<strong>立即删除</strong>，<strong>惰性删除</strong>，<strong>定时删除</strong>。<br><strong>立即删除：</strong>键值一过期就进行删除，保证了缓存最大的鲜活度，<strong>但是对CPU却不友好</strong>。删除是需要CPU时间的，如果CPU在高峰期，此时还要进行删除操作，无疑添加了CPU的负荷。<br><strong>惰性删除：</strong>到了过期时间不会立即删除，而是下次使用到了进行删除，显而易见，这种方式<strong>浪费了内存空间</strong>。<br><strong>定时删除：</strong>这是一种折中于上面两者之间的策略。每隔一段时间进行删除操作，并通过限制删除操作的时长和频率来减少对CPU的影响。<br><strong>而Redis采用定时删除+惰性删除。</strong>使用这种删除策略就一定没有问题吗，很明显不是的。如果定时删除没有删除key，你也长时间没有访问该key，那么还是白白浪费了内存空间。这时就要提到内存淘汰机制。<br>在redis.conf配置文件中有这么一行配置：<br><code># maxmemory-policy volatile-lru</code><br>该配置就是用来配置内存淘汰机制的。</li>
+<li>Sorted Set。相对于Set，多了一个权重参数sorce。可以根据sorce进行排序，例如排行榜等。</li>
+</ol>
+<a id="more"></a>
+<h2 id="Redis的过期策略和内存淘汰机制"><a href="#Redis的过期策略和内存淘汰机制" class="headerlink" title="Redis的过期策略和内存淘汰机制"></a>Redis的过期策略和内存淘汰机制</h2><p>我们已经知道Redis是在内存中工作的，如果一直不停的往Redis写数据，那内存很快就不够用了，所以需要进行删除。<br>一般来说，删除策略有三种：<strong>立即删除</strong>，<strong>惰性删除</strong>，<strong>定时删除</strong>。<br><strong>立即删除：</strong>键值一过期就进行删除，保证了缓存最大的鲜活度，<strong>但是对CPU却不友好</strong>。删除是需要CPU时间的，如果CPU在高峰期，此时还要进行删除操作，无疑添加了CPU的负荷。<br><strong>惰性删除：</strong>到了过期时间不会立即删除，而是下次使用到了进行删除，显而易见，这种方式<strong>浪费了内存空间</strong>。<br><strong>定时删除：</strong>这是一种折中于上面两者之间的策略。每隔一段时间进行删除操作，并通过限制删除操作的时长和频率来减少对CPU的影响。<br><strong>而Redis采用定时删除+惰性删除。</strong>使用这种删除策略就一定没有问题吗，很明显不是的。如果定时删除没有删除key，你也长时间没有访问该key，那么还是白白浪费了内存空间。这时就要提到内存淘汰机制。<br>在redis.conf配置文件中有这么一行配置：<br><code># maxmemory-policy volatile-lru</code><br>该配置就是用来配置内存淘汰机制的。</p>
+<ol>
 <li><strong>noeviction：</strong>当内存不足以容纳新写入数据时，新写入操作会报错。应该没人用吧。</li>
 <li><strong>allkeys-lru：</strong>当内存不足以容纳新写入数据时，在键空间中，移除最近最少使用的 Key。推荐使用，目前项目在用这种。</li>
 <li><strong>allkeys-random：</strong>当内存不足以容纳新写入数据时，在键空间中，随机移除某个 Key。应该也没人用吧，你不删最少使用 Key，去随机删。</li>
