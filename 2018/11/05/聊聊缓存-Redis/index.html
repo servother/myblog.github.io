@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="GT的博客">
 <meta property="og:description" content="分布式缓存Redis为什么使用Redis？使用Redis主要是考虑项目的性能和并发。从性能上来说：当我们执行一个繁琐但是不经常变动的SQL时，重复的浪费时间在执行SQL上了，此时加上缓存就可以直接访问缓存，大大节约了访问数据库的时间。从并发性上说：当很多个连接去访问数据库，数据库很容易出现异常等问题。当然还有Redis具有分布式锁等等优点。 单线程的Redis为什么这么快？首先，Redis是常驻内">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-05T03:34:23.171Z">
+<meta property="og:updated_time" content="2018-11-21T02:46:46.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简单聊聊缓存-Redis">
 <meta name="twitter:description" content="分布式缓存Redis为什么使用Redis？使用Redis主要是考虑项目的性能和并发。从性能上来说：当我们执行一个繁琐但是不经常变动的SQL时，重复的浪费时间在执行SQL上了，此时加上缓存就可以直接访问缓存，大大节约了访问数据库的时间。从并发性上说：当很多个连接去访问数据库，数据库很容易出现异常等问题。当然还有Redis具有分布式锁等等优点。 单线程的Redis为什么这么快？首先，Redis是常驻内">
@@ -469,21 +469,21 @@
 <li>缓存的并发竞争问题。</li>
 </ol>
 <p>有问题我们就需要解决。</p>
-<h3 id="缓存和数据库双写一致性问题"><a href="#缓存和数据库双写一致性问题" class="headerlink" title="缓存和数据库双写一致性问题"></a>缓存和数据库双写一致性问题</h3><p>一致性问题是分布式最常见的问题。一致性有可细分为最终一致性和强一致性。<br>对于强一致性的数据，是不建议放缓存的，我们做的一切只能保证最终一致性。<br>所以我们只能做好更新策略，先更新数据库，再删除缓存。对于缓存删除失败可以使用消息队列来做补偿措施。</p>
+<h3 id="缓存和数据库双写一致性问题"><a href="#缓存和数据库双写一致性问题" class="headerlink" title="缓存和数据库双写一致性问题"></a>缓存和数据库双写一致性问题</h3><p>一致性问题是分布式最常见的问题。一致性又可细分为最终一致性和强一致性。<br>对于强一致性的数据，是不建议放缓存的，我们做的一切只能保证最终一致性。<br>所以我们只能做好更新策略，先更新数据库，再删除缓存。对于缓存删除失败可以使用消息队列来做补偿措施。</p>
 <h3 id="缓存穿透问题"><a href="#缓存穿透问题" class="headerlink" title="缓存穿透问题"></a>缓存穿透问题</h3><p>当有黑客故意发出大量请求缓存中不存在的数据时，就会发生缓存穿透，导致大量请求怼到数据库，造成数据库异常。<br>对应的解决方案：</p>
 <ul>
 <li><strong>利用互斥锁</strong>：缓存失效的时候，先去获得锁，得到锁了，再去请求数据库。没得到锁，则休眠一段时间重试。</li>
 <li><strong>采用异步更新策略，无论 Key 是否取到值，都直接返回。</strong></li>
 <li><strong>提供一个能迅速判断请求是否有效的拦截机制</strong>：常用的如布隆过滤器，虽然不能保证百分百的过滤，但是很适合作为第一道门槛。</li>
 </ul>
-<h3 id="缓存雪崩问题"><a href="#缓存雪崩问题" class="headerlink" title="缓存雪崩问题"></a>缓存雪崩问题</h3><p>当有一大片缓存同时失效，而同时有来了一堆请求，就会出现大量请求直接访问到数据库，操作数据库异常。<br>对应的解决方案：</p>
+<h3 id="缓存雪崩问题"><a href="#缓存雪崩问题" class="headerlink" title="缓存雪崩问题"></a>缓存雪崩问题</h3><p>当有一大片缓存同时失效，而同时又来了一堆请求，就会出现大量请求直接访问到数据库，操作数据库异常。<br>对应的解决方案：</p>
 <ul>
 <li><strong>给缓存的失效时间，加上一个随机值，避免集体失效。</strong></li>
 <li>使用互斥锁，很明显这种容易造成吞吐量下降。</li>
 <li><strong>双缓存</strong>。</li>
 </ul>
 <h3 id="缓存的并发竞争问题"><a href="#缓存的并发竞争问题" class="headerlink" title="缓存的并发竞争问题"></a>缓存的并发竞争问题</h3><p>这种情况类似于有多个子系统要set同一个key。<br>百度很多说是利用redis事务机制来解决，单机可能有用，但是在redis集群中，数据做了分片就显得十分麻烦。<br>对于无顺序要求的，使用分布式锁，抢到锁就进行set，这种比较简单。<br>对于有顺序的，一种抢到锁进行set操作同时加上时间戳，如A要set这个key的value为a，B要set value为b，C要set value为c，在写入数据库的时候我们带上一个时间戳<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">系统A key（value a 11:00）</span><br><span class="line">系统B key（value b 11:01）</span><br><span class="line">系统C key（value c 11:02）</span><br></pre></td></tr></table></figure></p>
-<p>假如B先抢到锁，执行完set操作，此时A抢到锁，发现自己的时间戳早于此时B已经写入的时间戳，那么不进行set操作。<br>还有一种就是利用队列的串行实现顺序操作。</p>
+<p>假如B先抢到锁，执行完set操作，此时A抢到锁，发现自己的时间戳早于此时B已经写入的时间戳，那么不进行set操作。<br>还有一种就是利用队列的串行实现顺序操作。<br>还是那句话，技术是服务于实际业务的，多从实际业务中总结经验。</p>
 
       
     </div>
