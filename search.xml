@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[浅谈grpc]]></title>
+    <url>%2F2018%2F12%2F29%2F%E6%B5%85%E8%B0%88grpc%2F</url>
+    <content type="text"><![CDATA[浅谈grpcgrpc的实现流程一个完整的grpc包含以下流程：图文（略）概括来说，grpc的流程为： 通过.proto文件定义传输的接口和消息体。 通过protocol编译器生成server端和client端的stub程序。 将请求封装成HTTP2的stream。 通过channel作为数据通信通道使用socket进行数据传输。 未完（留坑）]]></content>
+      <categories>
+        <category>golang</category>
+      </categories>
+      <tags>
+        <tag>grpc</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[谈谈IOC/DI]]></title>
     <url>%2F2018%2F11%2F06%2F%E8%B0%88%E8%B0%88IOC-DI%2F</url>
     <content type="text"><![CDATA[]]></content>
