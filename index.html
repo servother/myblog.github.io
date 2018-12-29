@@ -452,16 +452,20 @@
 
       
         
-          
-            <h1 id="浅谈grpc"><a href="#浅谈grpc" class="headerlink" title="浅谈grpc"></a>浅谈grpc</h1><h2 id="grpc的实现流程"><a href="#grpc的实现流程" class="headerlink" title="grpc的实现流程"></a>grpc的实现流程</h2><h3 id="一个完整的grpc包含以下流程：图文（略）"><a href="#一个完整的grpc包含以下流程：图文（略）" class="headerlink" title="一个完整的grpc包含以下流程：图文（略）"></a>一个完整的grpc包含以下流程：图文（略）</h3><h3 id="概括来说，grpc的流程为："><a href="#概括来说，grpc的流程为：" class="headerlink" title="概括来说，grpc的流程为："></a>概括来说，grpc的流程为：</h3><ol>
+          <h1 id="浅谈grpc"><a href="#浅谈grpc" class="headerlink" title="浅谈grpc"></a>浅谈grpc</h1><h2 id="grpc的实现流程"><a href="#grpc的实现流程" class="headerlink" title="grpc的实现流程"></a>grpc的实现流程</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>1.简介：rpc即远程过程调用，简单来说就是两个进程间的通讯。grpc就是实现rpc的一个框架，但是摊上了一个好爹–google。<br>一个完整的grpc包含以下流程：<br>图文（略）<br>概括来说，grpc的流程为：</p>
+<ol>
 <li>通过.proto文件定义传输的接口和消息体。</li>
 <li>通过protocol编译器生成server端和client端的stub程序。</li>
 <li>将请求封装成HTTP2的stream。</li>
 <li>通过channel作为数据通信通道使用socket进行数据传输。</li>
 </ol>
-<p>未完（留坑）</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/29/浅谈grpc/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
