@@ -103,18 +103,18 @@
 
 
 
-  <meta name="description" content="多电脑发布hexo博客准备github账号在github上注册账号，并新建仓库。 安装nodejs按照网上的教程安装nodejs和hexo，教程很多不赘述了。 github上新建分支，将部署源码提交上去在博客库新建分支xxx，例如笔者命名为hexo分支，将部署源码提交上去。这里需要修改.gitignore文件，将不必要提交的本地配置等文件加进去。 另一台电脑安装hexo，clone部署源码另一台电">
-<meta name="keywords" content="随笔">
+  <meta name="description" content="浅谈mysql中的binlogbinlog是什么？binlog是mysql中的二进制日志，可以说是mysql中最重要的日志。它记录了几乎所有的DDL和DML语句（除了select查询语句），以事件形式记录，还包含语句执行所消耗的时间。mysql的二进制日志是事务安全型的。  DDL即数据库定义语言。主要命令有create，alter，drop等，DDL主要是用在定义或改变表的结构，数据类型，表之间">
+<meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="多电脑发布hexo博客">
-<meta property="og:url" content="http://cotcloud.cn/2018/10/12/多电脑发布hexo博客/index.html">
+<meta property="og:title" content="浅谈mysql中的binlog">
+<meta property="og:url" content="http://cotcloud.cn/2019/01/15/浅谈mysql中的binlog/index.html">
 <meta property="og:site_name" content="GT的博客">
-<meta property="og:description" content="多电脑发布hexo博客准备github账号在github上注册账号，并新建仓库。 安装nodejs按照网上的教程安装nodejs和hexo，教程很多不赘述了。 github上新建分支，将部署源码提交上去在博客库新建分支xxx，例如笔者命名为hexo分支，将部署源码提交上去。这里需要修改.gitignore文件，将不必要提交的本地配置等文件加进去。 另一台电脑安装hexo，clone部署源码另一台电">
+<meta property="og:description" content="浅谈mysql中的binlogbinlog是什么？binlog是mysql中的二进制日志，可以说是mysql中最重要的日志。它记录了几乎所有的DDL和DML语句（除了select查询语句），以事件形式记录，还包含语句执行所消耗的时间。mysql的二进制日志是事务安全型的。  DDL即数据库定义语言。主要命令有create，alter，drop等，DDL主要是用在定义或改变表的结构，数据类型，表之间">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-12T08:58:51.803Z">
+<meta property="og:updated_time" content="2019-01-15T08:36:52.962Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="多电脑发布hexo博客">
-<meta name="twitter:description" content="多电脑发布hexo博客准备github账号在github上注册账号，并新建仓库。 安装nodejs按照网上的教程安装nodejs和hexo，教程很多不赘述了。 github上新建分支，将部署源码提交上去在博客库新建分支xxx，例如笔者命名为hexo分支，将部署源码提交上去。这里需要修改.gitignore文件，将不必要提交的本地配置等文件加进去。 另一台电脑安装hexo，clone部署源码另一台电">
+<meta name="twitter:title" content="浅谈mysql中的binlog">
+<meta name="twitter:description" content="浅谈mysql中的binlogbinlog是什么？binlog是mysql中的二进制日志，可以说是mysql中最重要的日志。它记录了几乎所有的DDL和DML语句（除了select查询语句），以事件形式记录，还包含语句执行所消耗的时间。mysql的二进制日志是事务安全型的。  DDL即数据库定义语言。主要命令有create，alter，drop等，DDL主要是用在定义或改变表的结构，数据类型，表之间">
 
 
 
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://cotcloud.cn/2018/10/12/多电脑发布hexo博客/"/>
+  <link rel="canonical" href="http://cotcloud.cn/2019/01/15/浅谈mysql中的binlog/"/>
 
 
 
@@ -133,7 +133,7 @@
   };
 </script>
 
-  <title>多电脑发布hexo博客 | GT的博客</title>
+  <title>浅谈mysql中的binlog | GT的博客</title>
   
 
 
@@ -368,7 +368,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://cotcloud.cn/2018/10/12/多电脑发布hexo博客/">
+    <link itemprop="mainEntityOfPage" href="http://cotcloud.cn/2019/01/15/浅谈mysql中的binlog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="GroveTind">
@@ -385,7 +385,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">多电脑发布hexo博客</h2>
+          <h2 class="post-title" itemprop="name headline">浅谈mysql中的binlog</h2>
         
 
         <div class="post-meta">
@@ -397,7 +397,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-12T11:59:42+08:00">2018-10-12</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-15T14:47:06+08:00">2019-01-15</time>
             
 
             
@@ -418,7 +418,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mysql/" itemprop="url" rel="index"><span itemprop="name">mysql</span></a></span>
 
                 
                 
@@ -460,13 +460,33 @@
       
 
       
-        <h1 id="多电脑发布hexo博客"><a href="#多电脑发布hexo博客" class="headerlink" title="多电脑发布hexo博客"></a>多电脑发布hexo博客</h1><h2 id="准备github账号"><a href="#准备github账号" class="headerlink" title="准备github账号"></a>准备github账号</h2><p>在<a href="http://github.com" target="_blank" rel="noopener">github</a>上注册账号，并新建仓库。</p>
-<h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><p>按照网上的教程安装nodejs和hexo，教程很多不赘述了。</p>
-<h2 id="github上新建分支，将部署源码提交上去"><a href="#github上新建分支，将部署源码提交上去" class="headerlink" title="github上新建分支，将部署源码提交上去"></a>github上新建分支，将部署源码提交上去</h2><p>在博客库新建分支xxx，例如笔者命名为hexo分支，将部署源码提交上去。这里需要修改.gitignore文件，将不必要提交的本地配置等文件加进去。</p>
-<h2 id="另一台电脑安装hexo，clone部署源码"><a href="#另一台电脑安装hexo，clone部署源码" class="headerlink" title="另一台电脑安装hexo，clone部署源码"></a>另一台电脑安装hexo，clone部署源码</h2><p>另一台电脑安装和部署好hexo的环境，配置好Git，clone部署源码，就可以协同发布了。</p>
-<p>#总结<br>现在一个电脑上提交部署源码到git上，后面就是在git上协同发布博客的操作。<br>电脑A<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"提交部署源码"</span></span><br><span class="line">git push origin hexo   //初次将部署源码提交上hexo分支</span><br></pre></td></tr></table></figure></p>
-<p>电脑B<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git pull   //先更新下本地内容，再修改，再提交</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">""</span></span><br><span class="line">git push origin hexo</span><br></pre></td></tr></table></figure></p>
-<p>电脑A<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git pull   //先更新下本地内容，再修改，再提交</span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">""</span></span><br><span class="line">git push origin hexo</span><br></pre></td></tr></table></figure></p>
+        <h2 id="浅谈mysql中的binlog"><a href="#浅谈mysql中的binlog" class="headerlink" title="浅谈mysql中的binlog"></a>浅谈mysql中的binlog</h2><h3 id="binlog是什么？"><a href="#binlog是什么？" class="headerlink" title="binlog是什么？"></a>binlog是什么？</h3><p>binlog是mysql中的二进制日志，可以说是mysql中最重要的日志。它记录了几乎所有的DDL和DML语句（除了select查询语句），以事件形式记录，还包含语句执行所消耗的时间。mysql的二进制日志是事务安全型的。</p>
+<ol>
+<li>DDL即数据库定义语言。主要命令有create，alter，drop等，DDL主要是用在定义或改变表的结构，数据类型，表之间的链接和约束等初始化工作上。</li>
+<li>DML即数据库操纵语言。主要命令有select，update，delete，insert等，主要是进行表数据的操作工作。</li>
+</ol>
+<h3 id="binlog有什么作用？"><a href="#binlog有什么作用？" class="headerlink" title="binlog有什么作用？"></a>binlog有什么作用？</h3><p>最常用的就是两个作用：一是mysql的主从复制，将主库的binlog日志传递到从库来更新数据从而实现主从复制；二是mysql的数据恢复。<br><a id="more"></a></p>
+<h3 id="如何使用binlog？"><a href="#如何使用binlog？" class="headerlink" title="如何使用binlog？"></a>如何使用binlog？</h3><h4 id="binlog日志包括两类文件："><a href="#binlog日志包括两类文件：" class="headerlink" title="binlog日志包括两类文件："></a>binlog日志包括两类文件：</h4><ol>
+<li>二进制日志索引文件（文件名后缀为.index）用于记录所有的二进制文件。</li>
+<li>二进制日志文件（文件名后缀为.00000*）记录数据库所有的DDL和DML（除select）语句事件。</li>
+</ol>
+<h4 id="开启binlog日志功能"><a href="#开启binlog日志功能" class="headerlink" title="开启binlog日志功能"></a>开启binlog日志功能</h4><ol>
+<li>编辑打开mysql配置文件etc/mys.cnf</li>
+<li>在[mysqld]区块添加<code>log-bin=mysql-bin</code>，确认是打开状态</li>
+<li>重启mysql服务使配置生效</li>
+<li>查看binlog是否开启，使用<code>show variables like &#39;log_%&#39;;</code>，打开状态时结果集中会出现log_bin = ON。</li>
+</ol>
+<h4 id="常用的binlog日志操作命令"><a href="#常用的binlog日志操作命令" class="headerlink" title="常用的binlog日志操作命令"></a>常用的binlog日志操作命令</h4><ol>
+<li>查看所有binlog日志列表，命令：<code>show master logs;</code></li>
+<li>查看Master状态，即最新一个binlog日志的编号名称，以及最后一个操作事件pos结束点值，，命令：<code>show master status;</code></li>
+<li>flush刷新log日志，自此刻开始产生一个新编号的binlog日志文件，命令：<code>flush logs;</code>。另外，当mysql服务重启时会自动触发这个命令，还有mysql dump备份数据的时候带上了参数-F也会触发。</li>
+<li>清空所有binlog日志，命令：<code>reset master;</code></li>
+</ol>
+<h4 id="如何查看binlog日志"><a href="#如何查看binlog日志" class="headerlink" title="如何查看binlog日志"></a>如何查看binlog日志</h4><ol>
+<li>使用mysqlbinlog自带命令查看，例如<code>mysqlbinlog mysql-bin.000002</code>，使用cat,more,vim等命令是无法查看二进制日志文件的。</li>
+<li>上述方法将整个binlog日志文件内容读出，内容过多极不容易查看。可以使用<code>show binlog events[IN &#39;log_name&#39;][from pos][LIMIT [offset,] row_count];</code><br> IN ‘log_name’：指定要查询的binlog文件名（不指定就是从第一个binlog文件）<br> from pos：指定从哪个pos起始点查起（不指定就是从整个文件的第一个pos点起）<br> LIMIT [offset,]：偏移量（不指定则为0）<br> row_count：查询总条数（不指定就是所有行）</li>
+</ol>
+<h4 id="利用binlog日志恢复mysql数据"><a href="#利用binlog日志恢复mysql数据" class="headerlink" title="利用binlog日志恢复mysql数据"></a>利用binlog日志恢复mysql数据</h4><p>世上没有后悔药，即使有也肯定不好吃！所以恢复mysql的数据，就是在你开启了mysql的binlog日志功能后，通过阅读binlog日志文件的内容（重新去执行特定区间段的SQL语句）去挽回你的错误。<br>温馨提醒：恢复数据之前必须将binlog移出，否则恢复过程中会继续写入语句到binlog中，容易造成混乱。</p>
 
       
     </div>
@@ -495,7 +515,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/随笔/" rel="tag"># 随笔</a>
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
           
         </div>
       
@@ -508,8 +528,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/09/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/12/29/浅谈grpc/" rel="next" title="浅谈grpc">
+                <i class="fa fa-chevron-left"></i> 浅谈grpc
               </a>
             
           </div>
@@ -517,10 +537,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/18/Linux下修改主机名/" rel="prev" title="Linux下修改主机名">
-                Linux下修改主机名 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -749,7 +765,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#多电脑发布hexo博客"><span class="nav-number">1.</span> <span class="nav-text">多电脑发布hexo博客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备github账号"><span class="nav-number">1.1.</span> <span class="nav-text">准备github账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装nodejs"><span class="nav-number">1.2.</span> <span class="nav-text">安装nodejs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#github上新建分支，将部署源码提交上去"><span class="nav-number">1.3.</span> <span class="nav-text">github上新建分支，将部署源码提交上去</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#另一台电脑安装hexo，clone部署源码"><span class="nav-number">1.4.</span> <span class="nav-text">另一台电脑安装hexo，clone部署源码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#浅谈mysql中的binlog"><span class="nav-number">1.</span> <span class="nav-text">浅谈mysql中的binlog</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#binlog是什么？"><span class="nav-number">1.1.</span> <span class="nav-text">binlog是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#binlog有什么作用？"><span class="nav-number">1.2.</span> <span class="nav-text">binlog有什么作用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用binlog？"><span class="nav-number">1.3.</span> <span class="nav-text">如何使用binlog？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#binlog日志包括两类文件："><span class="nav-number">1.3.1.</span> <span class="nav-text">binlog日志包括两类文件：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开启binlog日志功能"><span class="nav-number">1.3.2.</span> <span class="nav-text">开启binlog日志功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的binlog日志操作命令"><span class="nav-number">1.3.3.</span> <span class="nav-text">常用的binlog日志操作命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何查看binlog日志"><span class="nav-number">1.3.4.</span> <span class="nav-text">如何查看binlog日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用binlog日志恢复mysql数据"><span class="nav-number">1.3.5.</span> <span class="nav-text">利用binlog日志恢复mysql数据</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

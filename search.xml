@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[浅谈mysql中的binlog]]></title>
+    <url>%2F2019%2F01%2F15%2F%E6%B5%85%E8%B0%88mysql%E4%B8%AD%E7%9A%84binlog%2F</url>
+    <content type="text"><![CDATA[浅谈mysql中的binlogbinlog是什么？binlog是mysql中的二进制日志，可以说是mysql中最重要的日志。它记录了几乎所有的DDL和DML语句（除了select查询语句），以事件形式记录，还包含语句执行所消耗的时间。mysql的二进制日志是事务安全型的。 DDL即数据库定义语言。主要命令有create，alter，drop等，DDL主要是用在定义或改变表的结构，数据类型，表之间的链接和约束等初始化工作上。 DML即数据库操纵语言。主要命令有select，update，delete，insert等，主要是进行表数据的操作工作。 binlog有什么作用？最常用的就是两个作用：一是mysql的主从复制，将主库的binlog日志传递到从库来更新数据从而实现主从复制；二是mysql的数据恢复。 如何使用binlog？binlog日志包括两类文件： 二进制日志索引文件（文件名后缀为.index）用于记录所有的二进制文件。 二进制日志文件（文件名后缀为.00000*）记录数据库所有的DDL和DML（除select）语句事件。 开启binlog日志功能 编辑打开mysql配置文件etc/mys.cnf 在[mysqld]区块添加log-bin=mysql-bin，确认是打开状态 重启mysql服务使配置生效 查看binlog是否开启，使用show variables like &#39;log_%&#39;;，打开状态时结果集中会出现log_bin = ON。 常用的binlog日志操作命令 查看所有binlog日志列表，命令：show master logs; 查看Master状态，即最新一个binlog日志的编号名称，以及最后一个操作事件pos结束点值，，命令：show master status; flush刷新log日志，自此刻开始产生一个新编号的binlog日志文件，命令：flush logs;。另外，当mysql服务重启时会自动触发这个命令，还有mysql dump备份数据的时候带上了参数-F也会触发。 清空所有binlog日志，命令：reset master; 如何查看binlog日志 使用mysqlbinlog自带命令查看，例如mysqlbinlog mysql-bin.000002，使用cat,more,vim等命令是无法查看二进制日志文件的。 上述方法将整个binlog日志文件内容读出，内容过多极不容易查看。可以使用show binlog events[IN &#39;log_name&#39;][from pos][LIMIT [offset,] row_count]; IN ‘log_name’：指定要查询的binlog文件名（不指定就是从第一个binlog文件） from pos：指定从哪个pos起始点查起（不指定就是从整个文件的第一个pos点起） LIMIT [offset,]：偏移量（不指定则为0） row_count：查询总条数（不指定就是所有行） 利用binlog日志恢复mysql数据世上没有后悔药，即使有也肯定不好吃！所以恢复mysql的数据，就是在你开启了mysql的binlog日志功能后，通过阅读binlog日志文件的内容（重新去执行特定区间段的SQL语句）去挽回你的错误。温馨提醒：恢复数据之前必须将binlog移出，否则恢复过程中会继续写入语句到binlog中，容易造成混乱。]]></content>
+      <categories>
+        <category>mysql</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[浅谈grpc]]></title>
     <url>%2F2018%2F12%2F29%2F%E6%B5%85%E8%B0%88grpc%2F</url>
     <content type="text"><![CDATA[浅谈grpcgrpc的实现流程概念1.简介：rpc即远程过程调用，简单来说就是两个进程间的通讯。grpc就是实现rpc的一个框架，但是摊上了一个好爹–google。一个完整的grpc包含以下流程：图文（略）概括来说，grpc的流程为： 通过.proto文件定义传输的接口和消息体。 通过protocol编译器生成server端和client端的stub程序。 将请求封装成HTTP2的stream。 通过channel作为数据通信通道使用socket进行数据传输。 未完（留坑）]]></content>
