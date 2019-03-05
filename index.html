@@ -455,7 +455,7 @@
       
         
           
-            <h2 id="1-如何获取用户真实IP？"><a href="#1-如何获取用户真实IP？" class="headerlink" title="1.如何获取用户真实IP？"></a>1.如何获取用户真实IP？</h2><p>PHP中getenv(“REMOTE_ADDR”)用来获取用户的IP，但用户使用代理服务器后，得到的会是代理服务器的IP地址；此时可以用getenv(“HTTP_X_FORWARDED_FOR”)来获取，但是当用户没有使用代理时会返回空值（返回的可能是多个ip地址，所以能够判断用户是否使用代理ip）。</p>
+            <h2 id="1-如何获取用户真实IP？"><a href="#1-如何获取用户真实IP？" class="headerlink" title="1.如何获取用户真实IP？"></a>1.如何获取用户真实IP？</h2><p>PHP中getenv(“REMOTE_ADDR”)用来获取用户的IP，但用户使用代理服务器后，得到的会是代理服务器的IP地址。<br>此时可以用getenv(“HTTP_X_FORWARDED_FOR”)来获取，但是当用户没有使用代理时会返回空值；当返回不为空值时其值包含多个ip地址，所以能够判断用户是否使用代理ip。</p>
 <h2 id="2-使用PHP实现快速排序算法？"><a href="#2-使用PHP实现快速排序算法？" class="headerlink" title="2.使用PHP实现快速排序算法？"></a>2.使用PHP实现快速排序算法？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">留坑</span><br></pre></td></tr></table></figure>
 <h2 id="3-PHP中的魔术方法及作用？"><a href="#3-PHP中的魔术方法及作用？" class="headerlink" title="3.PHP中的魔术方法及作用？"></a>3.PHP中的魔术方法及作用？</h2><pre><code>__construct：构造方法，实例对象时调用。
 __destrcut：析构方法，在对象被销毁时调用。

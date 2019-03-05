@@ -106,7 +106,7 @@
   <meta name="description" content="闲来无事，折腾折腾！">
 <meta property="og:type" content="website">
 <meta property="og:title" content="GT的博客">
-<meta property="og:url" content="http://cotcloud.cn/tags/PHP/index.html">
+<meta property="og:url" content="http://cotcloud.cn/tags/php/index.html">
 <meta property="og:site_name" content="GT的博客">
 <meta property="og:description" content="闲来无事，折腾折腾！">
 <meta property="og:locale" content="zh-CN">
@@ -121,7 +121,7 @@
 
 
 
-  <link rel="canonical" href="http://cotcloud.cn/tags/PHP/"/>
+  <link rel="canonical" href="http://cotcloud.cn/tags/php/"/>
 
 
 
@@ -131,7 +131,7 @@
   };
 </script>
 
-  <title>标签: PHP | GT的博客</title>
+  <title>标签: php | GT的博客</title>
   
 
 
@@ -385,7 +385,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h2>PHP<small>标签</small>
+        <h2>php<small>标签</small>
         </h2>
       </div>
 
@@ -397,9 +397,9 @@
 
       <h3 class="post-title">
         
-            <a class="post-title-link" href="/2019/03/04/PHP面试题记录/" itemprop="url">
+            <a class="post-title-link" href="/2018/10/08/rabbitmq实例/" itemprop="url">
               
-                <span itemprop="name">PHP面试题记录</span>
+                <span itemprop="name">rabbitmq实例</span>
               
             </a>
         
@@ -407,9 +407,93 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-04T15:41:03+08:00"
-              content="2019-03-04" >
-          03-04
+              datetime="2018-10-08T17:12:42+08:00"
+              content="2018-10-08" >
+          10-08
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h3 class="post-title">
+        
+            <a class="post-title-link" href="/2018/10/08/rabbitmq入门/" itemprop="url">
+              
+                <span itemprop="name">RabbitMQ入门</span>
+              
+            </a>
+        
+      </h3>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-10-08T16:20:27+08:00"
+              content="2018-10-08" >
+          10-08
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h3 class="post-title">
+        
+            <a class="post-title-link" href="/2018/10/08/IDE破解教程/" itemprop="url">
+              
+                <span itemprop="name">IDE破解教程</span>
+              
+            </a>
+        
+      </h3>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-10-08T15:00:00+08:00"
+              content="2018-10-08" >
+          10-08
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h3 class="post-title">
+        
+            <a class="post-title-link" href="/2018/04/20/demo/" itemprop="url">
+              
+                <span itemprop="name">入门</span>
+              
+            </a>
+        
+      </h3>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-04-20T10:43:27+08:00"
+              content="2018-04-20" >
+          04-20
         </time>
       </div>
 
@@ -1070,98 +1154,6 @@
                 searchResultList += result.item;
               })
               searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-    <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
-  
-</body>
-</html>
-          searchResultList += "</ul>";
               resultContent.innerHTML = searchResultList;
             }
           }
