@@ -455,9 +455,9 @@
       
         
           
-            <h2 id="1-如何获取用户真实IP？"><a href="#1-如何获取用户真实IP？" class="headerlink" title="1.如何获取用户真实IP？"></a>1.如何获取用户真实IP？</h2><pre><code>PHP中getenv(&quot;REMOTE_ADDR&quot;)用来获取用户的IP，但用户使用代理服务器后，得到的会是代理服务器的IP地址；此时可以用getenv(&quot;HTTP_X_FORWARDED_FOR&quot;)来获取，但是当用户没有使用代理时会返回空值（返回的可能是多个ip地址，所以能够判断用户是否使用代理ip）。
-</code></pre><h2 id="2-使用PHP实现快速排序算法？"><a href="#2-使用PHP实现快速排序算法？" class="headerlink" title="2.使用PHP实现快速排序算法？"></a>2.使用PHP实现快速排序算法？</h2><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">留坑</span><br></pre></td></tr></table></figure>
-</code></pre><h2 id="3-PHP中的魔术方法及作用？"><a href="#3-PHP中的魔术方法及作用？" class="headerlink" title="3.PHP中的魔术方法及作用？"></a>3.PHP中的魔术方法及作用？</h2><pre><code>__construct：构造方法，实例对象时调用。
+            <h2 id="1-如何获取用户真实IP？"><a href="#1-如何获取用户真实IP？" class="headerlink" title="1.如何获取用户真实IP？"></a>1.如何获取用户真实IP？</h2><p>PHP中getenv(“REMOTE_ADDR”)用来获取用户的IP，但用户使用代理服务器后，得到的会是代理服务器的IP地址；此时可以用getenv(“HTTP_X_FORWARDED_FOR”)来获取，但是当用户没有使用代理时会返回空值（返回的可能是多个ip地址，所以能够判断用户是否使用代理ip）。</p>
+<h2 id="2-使用PHP实现快速排序算法？"><a href="#2-使用PHP实现快速排序算法？" class="headerlink" title="2.使用PHP实现快速排序算法？"></a>2.使用PHP实现快速排序算法？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">留坑</span><br></pre></td></tr></table></figure>
+<h2 id="3-PHP中的魔术方法及作用？"><a href="#3-PHP中的魔术方法及作用？" class="headerlink" title="3.PHP中的魔术方法及作用？"></a>3.PHP中的魔术方法及作用？</h2><pre><code>__construct：构造方法，实例对象时调用。
 __destrcut：析构方法，在对象被销毁时调用。
 __set：设置一个不能访问的成员属性时触发。
 __get：获取一个不能访问的成员属性时触发。
@@ -472,7 +472,7 @@ __unset：在一个不能访问的对象属性被unset()时触发。
 __isset：在一个不能访问的对象属性被isset(),empty()时触发。
 __debugInfo：在一个对象被var_dump时触发。
 __set_state：在一个对象被var_export时触发。
-</code></pre><h2 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h2>
+</code></pre><h2 id="未完（持更！）"><a href="#未完（持更！）" class="headerlink" title="未完（持更！）"></a>未完（持更！）</h2>
           
         
       
