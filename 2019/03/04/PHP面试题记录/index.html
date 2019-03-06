@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="GT的博客">
 <meta property="og:description" content="PHP1.如何获取用户真实IP？PHP中getenv(“REMOTE_ADDR”)用来获取用户的IP，但用户使用代理服务器后，得到的会是代理服务器的IP地址。此时可以用getenv(“HTTP_X_FORWARDED_FOR”)来获取，但是当用户没有使用代理时会返回空值；当返回不为空值时其值包含多个ip地址，所以能够判断用户是否使用代理ip。 2.使用PHP实现快速排序算法？1留坑 3.PHP中的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-06T10:33:53.466Z">
+<meta property="og:updated_time" content="2019-03-06T10:40:31.606Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP面试题记录">
 <meta name="twitter:description" content="PHP1.如何获取用户真实IP？PHP中getenv(“REMOTE_ADDR”)用来获取用户的IP，但用户使用代理服务器后，得到的会是代理服务器的IP地址。此时可以用getenv(“HTTP_X_FORWARDED_FOR”)来获取，但是当用户没有使用代理时会返回空值；当返回不为空值时其值包含多个ip地址，所以能够判断用户是否使用代理ip。 2.使用PHP实现快速排序算法？1留坑 3.PHP中的">
@@ -477,10 +477,12 @@ __unset：在一个不能访问的对象属性被unset()时触发。
 __isset：在一个不能访问的对象属性被isset(),empty()时触发。
 __debugInfo：在一个对象被var_dump时触发。
 __set_state：在一个对象被var_export时触发。
-</code></pre><h2 id="4-fastcgi通过端口监听和通过文件监听的区别？"><a href="#4-fastcgi通过端口监听和通过文件监听的区别？" class="headerlink" title="4.fastcgi通过端口监听和通过文件监听的区别？"></a>4.fastcgi通过端口监听和通过文件监听的区别？</h2><h2 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h2><h1 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h1><h2 id="1-索引是什么？有什么作用及优缺点？"><a href="#1-索引是什么？有什么作用及优缺点？" class="headerlink" title="1.索引是什么？有什么作用及优缺点？"></a>1.索引是什么？有什么作用及优缺点？</h2><pre><code>数据库索引就像一本书的目录一样，类似新华字典的索引。主要作用是提高查询效率。
+</code></pre><h2 id="4-fastcgi通过端口监听和通过文件监听的区别？"><a href="#4-fastcgi通过端口监听和通过文件监听的区别？" class="headerlink" title="4.fastcgi通过端口监听和通过文件监听的区别？"></a>4.fastcgi通过端口监听和通过文件监听的区别？</h2><a id="more"></a>
+<h2 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h2><h1 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h1><h2 id="1-索引是什么？有什么作用及优缺点？"><a href="#1-索引是什么？有什么作用及优缺点？" class="headerlink" title="1.索引是什么？有什么作用及优缺点？"></a>1.索引是什么？有什么作用及优缺点？</h2><pre><code>数据库索引就像一本书的目录一样，类似新华字典的索引。主要作用是提高查询效率。
 数据库索引主要分为：唯一索引，主键索引，全文索引，聚合索引，普通索引。
 优点：1.提高查询速度；2.加快连表速度；3.查询中如果用到分组及排序子句时，建立索引能够大大提高效率。
-缺点：1.建库时需要花费时间创建和维护索引，索引也占有一定存储空间；2.修改表中的数据时，索引还需要进行动态的维护，增添了数据库维护上的一些麻烦。
+缺点：1.建库时需要花费时间创建和维护索引，索引也占有一定存储空间；
+      2.修改表中的数据时，索引还需要进行动态的维护，增添了数据库维护上的一些麻烦。
 </code></pre><h2 id="2-mysql的引擎有哪些？"><a href="#2-mysql的引擎有哪些？" class="headerlink" title="2.mysql的引擎有哪些？"></a>2.mysql的引擎有哪些？</h2><h2 id="3-SQL优化的步骤？"><a href="#3-SQL优化的步骤？" class="headerlink" title="3.SQL优化的步骤？"></a>3.SQL优化的步骤？</h2><h1 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h1><h2 id="1-nginx的负载均衡的方式主要有哪些？"><a href="#1-nginx的负载均衡的方式主要有哪些？" class="headerlink" title="1.nginx的负载均衡的方式主要有哪些？"></a>1.nginx的负载均衡的方式主要有哪些？</h2>
       
     </div>

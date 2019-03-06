@@ -454,8 +454,7 @@
 
       
         
-          
-            <h1 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h1><h2 id="1-如何获取用户真实IP？"><a href="#1-如何获取用户真实IP？" class="headerlink" title="1.如何获取用户真实IP？"></a>1.如何获取用户真实IP？</h2><p>PHP中getenv(“REMOTE_ADDR”)用来获取用户的IP，但用户使用代理服务器后，得到的会是代理服务器的IP地址。<br>此时可以用getenv(“HTTP_X_FORWARDED_FOR”)来获取，但是当用户没有使用代理时会返回空值；当返回不为空值时其值包含多个ip地址，所以能够判断用户是否使用代理ip。</p>
+          <h1 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h1><h2 id="1-如何获取用户真实IP？"><a href="#1-如何获取用户真实IP？" class="headerlink" title="1.如何获取用户真实IP？"></a>1.如何获取用户真实IP？</h2><p>PHP中getenv(“REMOTE_ADDR”)用来获取用户的IP，但用户使用代理服务器后，得到的会是代理服务器的IP地址。<br>此时可以用getenv(“HTTP_X_FORWARDED_FOR”)来获取，但是当用户没有使用代理时会返回空值；当返回不为空值时其值包含多个ip地址，所以能够判断用户是否使用代理ip。</p>
 <h2 id="2-使用PHP实现快速排序算法？"><a href="#2-使用PHP实现快速排序算法？" class="headerlink" title="2.使用PHP实现快速排序算法？"></a>2.使用PHP实现快速排序算法？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">留坑</span><br></pre></td></tr></table></figure>
 <h2 id="3-PHP中的魔术方法及作用？"><a href="#3-PHP中的魔术方法及作用？" class="headerlink" title="3.PHP中的魔术方法及作用？"></a>3.PHP中的魔术方法及作用？</h2><pre><code>__construct：构造方法，实例对象时调用。
 __destrcut：析构方法，在对象被销毁时调用。
@@ -472,12 +471,14 @@ __unset：在一个不能访问的对象属性被unset()时触发。
 __isset：在一个不能访问的对象属性被isset(),empty()时触发。
 __debugInfo：在一个对象被var_dump时触发。
 __set_state：在一个对象被var_export时触发。
-</code></pre><h2 id="4-fastcgi通过端口监听和通过文件监听的区别？"><a href="#4-fastcgi通过端口监听和通过文件监听的区别？" class="headerlink" title="4.fastcgi通过端口监听和通过文件监听的区别？"></a>4.fastcgi通过端口监听和通过文件监听的区别？</h2><h2 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h2><h1 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h1><h2 id="1-索引是什么？有什么作用及优缺点？"><a href="#1-索引是什么？有什么作用及优缺点？" class="headerlink" title="1.索引是什么？有什么作用及优缺点？"></a>1.索引是什么？有什么作用及优缺点？</h2><pre><code>数据库索引就像一本书的目录一样，类似新华字典的索引。主要作用是提高查询效率。
-数据库索引主要分为：唯一索引，主键索引，全文索引，聚合索引，普通索引。
-优点：1.提高查询速度；2.加快连表速度；3.查询中如果用到分组及排序子句时，建立索引能够大大提高效率。
-缺点：1.建库时需要花费时间创建和维护索引，索引也占有一定存储空间；2.修改表中的数据时，索引还需要进行动态的维护，增添了数据库维护上的一些麻烦。
-</code></pre><h2 id="2-mysql的引擎有哪些？"><a href="#2-mysql的引擎有哪些？" class="headerlink" title="2.mysql的引擎有哪些？"></a>2.mysql的引擎有哪些？</h2><h2 id="3-SQL优化的步骤？"><a href="#3-SQL优化的步骤？" class="headerlink" title="3.SQL优化的步骤？"></a>3.SQL优化的步骤？</h2><h1 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h1><h2 id="1-nginx的负载均衡的方式主要有哪些？"><a href="#1-nginx的负载均衡的方式主要有哪些？" class="headerlink" title="1.nginx的负载均衡的方式主要有哪些？"></a>1.nginx的负载均衡的方式主要有哪些？</h2>
-          
+</code></pre><h2 id="4-fastcgi通过端口监听和通过文件监听的区别？"><a href="#4-fastcgi通过端口监听和通过文件监听的区别？" class="headerlink" title="4.fastcgi通过端口监听和通过文件监听的区别？"></a>4.fastcgi通过端口监听和通过文件监听的区别？</h2>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/04/PHP面试题记录/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
